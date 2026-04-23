@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* =============================================================
+   Theme tokens — exposed as Tailwind v4 @theme variables
+   ------------------------------------------------------------- */
+@theme {
+  /* Fonts — Instrument Serif for display, Inter for body, JetBrains Mono for metadata */
+  --font-serif: "Instrument Serif", ui-serif, Charter, Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Warm dark palette */
+  --color-bg: #0c0a08;
+  --color-bg-elevated: #14110d;
+  --color-border: #1c1814;
+  --color-border-strong: #2a2520;
+  --color-fg: #f4eee1;
+  --color-fg-muted: #a39785;
+  --color-fg-dim: #5e5648;
+  --color-accent: #c8973a;
+  --color-accent-dim: #a07a26;
+
+  /* Light-mode mirror */
+  --color-bg-light: #fbf8f1;
+  --color-bg-elevated-light: #ffffff;
+  --color-border-light: #e8e1cf;
+  --color-border-strong-light: #d2c8ad;
+  --color-fg-light: #1a1410;
+  --color-fg-muted-light: #5b5244;
+  --color-fg-dim-light: #8c7f6a;
+}
+
+/* =============================================================
+   Base — root variables switch via data-theme
+   ------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+  --bg: var(--color-bg);
+  --bg-elevated: var(--color-bg-elevated);
+  --border: var(--color-border);
+  --border-strong: var(--color-border-strong);
+  --fg: var(--color-fg);
+  --fg-muted: var(--color-fg-muted);
+  --fg-dim: var(--color-fg-dim);
+  --accent: var(--color-accent);
+  --accent-dim: var(--color-accent-dim);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: var(--color-bg-light);
+  --bg-elevated: var(--color-bg-elevated-light);
+  --border: var(--color-border-light);
+  --border-strong: var(--color-border-strong-light);
+  --fg: var(--color-fg-light);
+  --fg-muted: var(--color-fg-muted-light);
+  --fg-dim: var(--color-fg-dim-light);
+  --accent: var(--color-accent-dim);
+  --accent-dim: var(--color-accent);
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv11";
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+/* Prevent theme-toggle flash — applied inline in Layout */
+.no-transitions * { transition: none !important; }
+
+/* =============================================================
+   Typography utilities exposed as classes for content/MDX
+   ------------------------------------------------------------- */
+.prose-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.mono-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-dim);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* =============================================================
+   Selection + link underlines
+   ------------------------------------------------------------- */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =============================================================
+   MDX / prose content styling
+   ------------------------------------------------------------- */
+.content {
+  max-width: 68ch;
+}
+.content h1, .content h2, .content h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+  line-height: 1.2;
+}
+.content h1 { font-size: 2.25rem; }
+.content h2 { font-size: 1.65rem; }
+.content h3 { font-size: 1.3rem; }
+.content p {
+  margin: 0 0 1.2em;
+  color: var(--fg);
+}
+.content a {
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  transition: border-color 120ms ease;
+}
+.content a:hover { border-bottom-color: var(--accent); }
+.content ul, .content ol { padding-left: 1.4em; margin: 0 0 1.2em; }
+.content li { margin: 0.25em 0; }
+.content blockquote {
+  border-left: 2px solid var(--accent);
+  padding: 0.25em 0 0.25em 1.25em;
+  margin: 1.5em 0;
+  color: var(--fg-muted);
+  font-family: var(--font-serif);
+  font-size: 1.15em;
+  font-style: italic;
+}
+.content code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--bg-elevated);
+  padding: 0.12em 0.35em;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+.content pre {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 1em 1.1em;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated) !important;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.content pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.content hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+/* =============================================================
+   Motion — respect reduced-motion
+   ------------------------------------------------------------- */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.pulse-dot { animation: pulse-dot 2.2s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot { animation: none; }
+  * { scroll-behavior: auto !important; }
+}
+
+/* =============================================================
+   View transitions
+   ------------------------------------------------------------- */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+}

@@ -1,0 +1,114 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { site, nav } from '../config';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : site.title;
+const pageDesc = description ?? site.description;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={pageDesc} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0c0a08" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={site.name} href="/rss.xml" />
+
+    <!-- OG tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+
+    <!-- Fonts: Instrument Serif + Inter + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Prevent theme-flash: read stored preference before paint -->
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+          const theme = stored || (prefersLight ? 'light' : 'dark');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (_) {}
+      })();
+    </script>
+
+    <title>{pageTitle}</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <div class="mx-auto flex min-h-dvh max-w-[720px] flex-col px-6 sm:px-8">
+      <header
+        class="flex items-center justify-between border-b py-5"
+        style="border-color: var(--border);"
+      >
+        <a
+          href="/"
+          class="prose-serif text-[17px] tracking-tight transition-opacity hover:opacity-80"
+          style="color: var(--fg);"
+          aria-label="Home"
+        >
+          {site.name}
+        </a>
+        <div class="flex items-center gap-6 text-[13.5px]">
+          {
+            nav.map((item) => {
+              const active = currentPath === item.href || currentPath.startsWith(item.href);
+              return (
+                <a
+                  href={item.href}
+                  class="transition-colors hover:opacity-100"
+                  style={`color: ${active ? 'var(--accent)' : 'var(--fg-muted)'};`}
+                  aria-current={active ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
+          <ThemeToggle />
+        </div>
+      </header>
+
+      <main class="flex-1 py-10 sm:py-14">
+        <slot />
+      </main>
+
+      <footer
+        class="flex flex-wrap justify-between gap-3 border-t py-5 text-[12px]"
+        style="border-color: var(--border); color: var(--fg-dim); font-family: var(--font-mono);"
+      >
+        <span>{site.location}</span>
+        <span class="flex gap-4">
+          <a href={site.github} target="_blank" rel="noreferrer" class="hover:opacity-80">github</a>
+          <a href={site.linkedin} target="_blank" rel="noreferrer" class="hover:opacity-80">linkedin</a>
+          <a href={`mailto:${site.email}`} class="hover:opacity-80">email</a>
+          <a href="/rss.xml" class="hover:opacity-80">rss</a>
+        </span>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config';
+
+const certs = [
+  { name: 'AWS Certified Advanced Networking – Specialty', year: 'Aug 2025' },
+  { name: 'AWS Certified SysOps Administrator – Associate', year: 'Feb 2025' },
+  { name: 'AWS Certified Solutions Architect – Associate', year: 'Mar 2024' },
+  { name: 'AWS Certified Cloud Practitioner – Foundational', year: 'Nov 2021' },
+];
+---
+
+<Base title="About" description="Cloud software engineer at John Deere. 6+ years shipping platform and DevEx work at enterprise scale.">
+  <section class="content">
+    <h1 class="prose-serif mb-8 text-[40px] leading-[1.1]" style="color: var(--fg);">About</h1>
+
+    <p>
+      I'm Mitch — a cloud software engineer at John Deere with 6+ years shipping platform and
+      developer experience work at enterprise scale. I live in Des Moines, Iowa.
+    </p>
+
+    <p>
+      My current chapter is a new team focused on figuring out what effective AI usage looks like
+      across our engineering org. The question I keep pulling on: how do we take something that's
+      mostly been measured by vibes and build empirical metrics around it? Inspired by Karpathy's
+      writing on LLM wikis, I'm especially interested in the context infrastructure side — the
+      observation that AI output improves dramatically when it has access to the kind of "pet
+      knowledge" teams usually keep in human heads.
+    </p>
+
+    <p>
+      Before the AI team, I spent most of my time on <a href="/work/">platform work</a> — PR-to-prod
+      governance at 50,000+ repos, VPC consolidation that saved seven figures, DNS migrations
+      touching six-figure vulnerability counts. The common thread across all of it is the same: make
+      the hard, important thing also be the easy, default thing.
+    </p>
+
+    <h2>Credentials</h2>
+    <ul>
+      <li>B.S. Software Engineering, Iowa State University (Cum Laude, 2020). Cyber security minor.</li>
+      {certs.map((c) => <li>{c.name} <span style="color: var(--fg-dim); font-family: var(--font-mono); font-size: 0.82em;"> · {c.year}</span></li>)}
+    </ul>
+
+    <h2>Elsewhere</h2>
+    <ul>
+      <li><a href={site.github} target="_blank" rel="noreferrer">GitHub</a></li>
+      <li><a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
+      <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+    </ul>
+
+    <h2>About this site</h2>
+    <p>
+      Built with Astro, Tailwind, and MDX. Hosted on GitHub Pages. Source is public — see the link
+      in the footer.
+    </p>
+  </section>
+</Base>

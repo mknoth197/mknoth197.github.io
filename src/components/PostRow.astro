@@ -1,0 +1,40 @@
+---
+interface Props {
+  href: string;
+  date: Date;
+  title: string;
+  readingTime?: string;
+  draft?: boolean;
+}
+const { href, date, title, readingTime, draft } = Astro.props;
+
+const dateLabel = draft
+  ? 'draft'
+  : date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }).toLowerCase();
+const tail = readingTime ?? '—';
+---
+
+<a
+  href={href}
+  class="group grid grid-cols-[64px_minmax(0,1fr)_auto] items-baseline gap-5 border-b py-[18px] transition-colors"
+  style="border-color: var(--border);"
+>
+  <span
+    class="text-[11px] tabular-nums"
+    style={`font-family: var(--font-mono); color: ${draft ? 'var(--accent)' : 'var(--fg-dim)'};`}
+  >
+    {dateLabel}
+  </span>
+  <span
+    class="prose-serif text-[18px] leading-snug transition-colors group-hover:opacity-75"
+    style="color: var(--fg);"
+  >
+    {title}
+  </span>
+  <span
+    class="text-[11px]"
+    style="font-family: var(--font-mono); color: var(--fg-dim);"
+  >
+    {tail}
+  </span>
+</a>

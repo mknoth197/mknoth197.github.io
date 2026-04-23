@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Base title="Work" description="Selected work from six years at John Deere — cloud networking, compliance automation, and developer experience.">
+  <section class="mb-12">
+    <h1 class="prose-serif mb-4 text-[36px] leading-[1.1]" style="color: var(--fg);">Work</h1>
+    <p class="max-w-[60ch] text-[15.5px] leading-[1.7]" style="color: var(--fg-muted);">
+      Selected work from six years at John Deere. Most of this sits behind the enterprise firewall,
+      so these are summaries focused on outcomes rather than code links.
+    </p>
+  </section>
+
+  <div class="flex flex-col gap-2">
+    {
+      projects.map((p) => (
+        <article
+          class="grid grid-cols-1 gap-6 border-b py-8 sm:grid-cols-[140px_minmax(0,1fr)]"
+          style="border-color: var(--border);"
+        >
+          <div class="mono-meta pt-[6px]">{p.data.period}</div>
+          <div>
+            <div class="mb-2 flex flex-wrap items-baseline gap-x-4">
+              <h2 class="prose-serif text-[22px] leading-tight" style="color: var(--fg);">
+                {p.data.title}
+              </h2>
+              {p.data.metric && (
+                <span class="text-[13px]" style="color: var(--accent); font-family: var(--font-mono);">
+                  {p.data.metric.value}
+                </span>
+              )}
+            </div>
+            <p class="mb-3 text-[15px] leading-[1.65]" style="color: var(--fg-muted);">
+              {p.data.summary}
+            </p>
+            {p.data.stack.length > 0 && (
+              <div class="flex flex-wrap gap-2">
+                {p.data.stack.map((s) => (
+                  <span
+                    class="rounded-[3px] border px-[6px] py-[2px] text-[11px]"
+                    style="border-color: var(--border-strong); color: var(--fg-dim); font-family: var(--font-mono);"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</Base>

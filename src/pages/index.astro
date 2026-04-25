@@ -1,36 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import CurrentlyPill from '../components/CurrentlyPill.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import PostRow from '../components/PostRow.astro';
 import MetricCard from '../components/MetricCard.astro';
 import { site } from '../config';
+import { getProjects, getPublishedPosts } from '../lib/content';
 
-const allPosts = await getCollection('posts');
-const recent = allPosts
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
-
-// Metrics pulled straight from the resume — edit freely in src/content/metrics.
-const metrics = [
-  {
-    value: '$1M',
-    label: 'Annual cloud spend cut via NAT Gateway consolidation across ~2,000 VPCs.',
-  },
-  {
-    value: '140K',
-    label: 'DNS vulnerabilities remediated in an enterprise migration at 100% uptime.',
-  },
-  {
-    value: '50K+',
-    label: 'Repos monitored for segregation-of-duties via event-driven compliance platform.',
-  },
-  {
-    value: 'hrs→s',
-    label: 'Account & VPC deletion automated via Step Functions, eliminating human error.',
-  },
-];
+const recent = (await getPublishedPosts()).slice(0, 3);
+const featuredMetrics = (await getProjects())
+  .filter((project) => project.data.featured && project.data.metric)
+  .slice(0, 4);
 ---
 
 <Base>
@@ -67,7 +47,6 @@ const metrics = [
             date={post.data.date}
             title={post.data.title}
             readingTime={post.data.readingTime}
-            draft={post.data.draft}
           />
         ))
       )
@@ -79,6 +58,13 @@ const metrics = [
     class="grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border sm:grid-cols-2"
     style="background: var(--border); border-color: var(--border);"
   >
-    {metrics.map((m) => <MetricCard value={m.value} label={m.label} />)}
+    {
+      featuredMetrics.map((project) => (
+        <MetricCard
+          value={project.data.metric!.value}
+          label={`${project.data.metric!.label} - ${project.data.title}`}
+        />
+      ))
+    }
   </div>
 </Base>

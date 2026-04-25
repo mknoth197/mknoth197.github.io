@@ -1,0 +1,49 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getProjects } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props as { project: CollectionEntry<'projects'> };
+const { Content } = await render(project);
+---
+
+<Base title={project.data.title} description={project.data.summary} ogType="article">
+  <article class="content mx-auto">
+    <a href="/work/" class="eyebrow-link">← all work</a>
+
+    <header class="mb-10 mt-5">
+      <div class="mono-meta mb-4">{project.data.period}</div>
+      <h1 class="prose-serif text-[40px] leading-[1.1]" style="color: var(--fg);">
+        {project.data.title}
+      </h1>
+      <p class="mt-4 text-[17px] leading-[1.7]" style="color: var(--fg-muted);">
+        {project.data.summary}
+      </p>
+
+      {
+        project.data.stack.length > 0 && (
+          <div class="mt-6 flex flex-wrap gap-2">
+            {project.data.stack.map((item) => (
+              <span
+                class="rounded-[3px] border px-[6px] py-[2px] text-[11px]"
+                style="border-color: var(--border-strong); color: var(--fg-dim); font-family: var(--font-mono);"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        )
+      }
+    </header>
+
+    <Content />
+  </article>
+</Base>

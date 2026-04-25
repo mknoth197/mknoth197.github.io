@@ -9,3 +9,17 @@ metric:
 featured: true
 order: 2
 ---
+
+## Scope
+
+OneCloud was a large-scale network simplification effort across thousands of VPCs. The problem was not just cost; it was the operational drag and security exposure that comes from fragmented network patterns repeated across the enterprise.
+
+## What changed
+
+- Consolidated NAT Gateway usage patterns to reduce unnecessary spend across roughly 2,000 VPCs.
+- Orchestrated a DNS migration that remediated 140,000+ DNS-related vulnerabilities without introducing downtime during cutover.
+- Migrated 10,000+ ACM certificates from email validation to DNS validation so renewals became automatable and far less outage-prone.
+
+## Outcome
+
+The work cut annual cloud spend by seven figures, materially reduced security risk, and left the network in a state that was easier to operate and reason about at enterprise scale.

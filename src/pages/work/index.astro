@@ -1,10 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { getProjects } from '../../lib/content';
 
-const projects = (await getCollection('projects')).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+const projects = await getProjects();
 ---
 
 <Base title="Work" description="Selected work from six years at John Deere — cloud networking, compliance automation, and developer experience.">
@@ -12,7 +10,7 @@ const projects = (await getCollection('projects')).sort(
     <h1 class="prose-serif mb-4 text-[36px] leading-[1.1]" style="color: var(--fg);">Work</h1>
     <p class="max-w-[60ch] text-[15.5px] leading-[1.7]" style="color: var(--fg-muted);">
       Selected work from six years at John Deere. Most of this sits behind the enterprise firewall,
-      so these are summaries focused on outcomes rather than code links.
+      so these case studies focus on architecture, constraints, and outcomes rather than source links.
     </p>
   </section>
 
@@ -27,7 +25,9 @@ const projects = (await getCollection('projects')).sort(
           <div>
             <div class="mb-2 flex flex-wrap items-baseline gap-x-4">
               <h2 class="prose-serif text-[22px] leading-tight" style="color: var(--fg);">
-                {p.data.title}
+                <a href={`/work/${p.id}/`} class="hover:opacity-80">
+                  {p.data.title}
+                </a>
               </h2>
               {p.data.metric && (
                 <span class="text-[13px]" style="color: var(--accent); font-family: var(--font-mono);">
@@ -50,6 +50,9 @@ const projects = (await getCollection('projects')).sort(
                 ))}
               </div>
             )}
+            <p class="mt-4 text-[12px]" style="font-family: var(--font-mono);">
+              <a href={`/work/${p.id}/`} style="color: var(--accent);">Read case study →</a>
+            </p>
           </div>
         </article>
       ))

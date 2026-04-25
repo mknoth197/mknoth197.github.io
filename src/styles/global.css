@@ -75,8 +75,26 @@ body {
   min-height: 100dvh;
 }
 
-/* Prevent theme-toggle flash — applied inline in Layout */
 .no-transitions * { transition: none !important; }
+
+.skip-link {
+  position: absolute;
+  left: 1.5rem;
+  top: 1rem;
+  z-index: 20;
+  transform: translateY(-160%);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--bg-elevated);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 0.65rem 0.85rem;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
 
 /* =============================================================
    Typography utilities exposed as classes for content/MDX
@@ -174,6 +192,15 @@ a {
   border: 0;
   border-top: 1px solid var(--border);
   margin: 2em 0;
+}
+
+.content .eyebrow-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: none;
 }
 
 /* =============================================================

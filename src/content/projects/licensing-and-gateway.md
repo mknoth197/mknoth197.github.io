@@ -5,3 +5,16 @@ period: "2019 – 2021"
 stack: ["java", "api-gateway", "oauth", "aws"]
 order: 4
 ---
+
+## Scope
+
+This chapter covered two related kinds of platform work: safely opening data up inside the company, and safely exposing selected capabilities outside the company.
+
+## What I built
+
+- A secure ingestion pipeline during a hackathon that demonstrated license data could be shared internally without losing isolation and access-control guarantees.
+- The first external API on the Global Gateway platform, designed with role-based authorization and audit logging from the start.
+
+## Outcome
+
+The ingestion prototype helped justify a dedicated Data Engineering investment, and the external API work established a pattern for exposing business-critical data to dealers without treating security and observability as afterthoughts.

@@ -38,17 +38,17 @@ Posts live in `src/content/posts/` as `.md` or `.mdx` files. Frontmatter schema 
 title: "Your post title"
 summary: "One sentence pitch. Shows up in the list and meta tags."
 date: 2026-04-20
-draft: false            # true = shows "draft" badge in the list
+draft: false            # true = excluded from generated routes, lists, RSS
 readingTime: "6 min"    # optional but recommended
 tags: ["ai", "sdlc"]    # optional
 ---
 ```
 
-The URL for a post is `/writing/<filename-without-extension>/`. RSS and sitemap update automatically on build.
+Published posts render at `/writing/<filename-without-extension>/`. RSS and sitemap update automatically on build.
 
 ## Editing work / project entries
 
-Entries live in `src/content/projects/` — one markdown file per project. The body is ignored for now; all content comes from frontmatter:
+Entries live in `src/content/projects/` — one markdown file per project. Frontmatter drives the list and homepage cards, and the body renders as the case study page at `/work/<filename-without-extension>/`:
 
 ```yaml
 ---
@@ -60,7 +60,7 @@ metric:
   value: "$1M saved"
   label: "Annual spend"
 order: 1       # lower numbers appear first
-featured: true # reserved for future use
+featured: true # shows on the home page when metric is also present
 ---
 ```
 
@@ -75,7 +75,7 @@ export const site = {
 };
 ```
 
-The headline, lede, and metrics grid live directly in `src/pages/index.astro` — edit there. Tweak the metrics array to reflect whichever four numbers you want on the home page at any given time.
+The headline and lede live directly in `src/pages/index.astro`. The "Recent writing" section pulls from published posts, and the "Selected work" grid pulls from project entries marked `featured: true` with a `metric`.
 
 ## Editing About
 

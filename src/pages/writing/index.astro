@@ -1,19 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PostRow from '../../components/PostRow.astro';
+import { getPublishedPosts } from '../../lib/content';
 
-const posts = (await getCollection('posts')).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-);
+const posts = await getPublishedPosts();
 ---
 
 <Base title="Writing" description="Notes on AI-native development, cloud networking, and enterprise platform engineering.">
   <section class="mb-12">
     <h1 class="prose-serif mb-4 text-[36px] leading-[1.1]" style="color: var(--fg);">Writing</h1>
     <p class="max-w-[60ch] text-[15.5px] leading-[1.7]" style="color: var(--fg-muted);">
-      Notes on AI-native development, cloud networking, and enterprise platform engineering. Drafts
-      ship early and get revised in public.
+      Published notes on AI-native development, cloud networking, and enterprise platform engineering.
     </p>
   </section>
 
@@ -30,7 +27,6 @@ const posts = (await getCollection('posts')).sort(
             date={post.data.date}
             title={post.data.title}
             readingTime={post.data.readingTime}
-            draft={post.data.draft}
           />
         ))
       )

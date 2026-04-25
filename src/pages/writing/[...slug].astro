@@ -1,9 +1,10 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { getPublishedPosts } from '../../lib/content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const posts = await getPublishedPosts();
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -20,13 +21,10 @@ const dateLabel = post.data.date.toLocaleDateString('en-US', {
 });
 ---
 
-<Base title={post.data.title} description={post.data.summary}>
+<Base title={post.data.title} description={post.data.summary} ogType="article">
   <article class="content mx-auto">
     <header class="mb-10">
-      <div class="mono-meta mb-4">
-        {post.data.draft ? 'draft · ' : ''}{dateLabel}
-        {post.data.readingTime ? ` · ${post.data.readingTime}` : ''}
-      </div>
+      <div class="mono-meta mb-4">{dateLabel}{post.data.readingTime ? ` · ${post.data.readingTime}` : ''}</div>
       <h1 class="prose-serif text-[40px] leading-[1.1]" style="color: var(--fg);">
         {post.data.title}
       </h1>

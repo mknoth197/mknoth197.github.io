@@ -7,12 +7,15 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  ogType?: 'website' | 'article';
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogType = 'website' } = Astro.props;
 const pageTitle = title ? `${title} — ${site.name}` : site.title;
 const pageDesc = description ?? site.description;
 const currentPath = Astro.url.pathname;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const socialImageUrl = new URL('/social-card.svg', Astro.site).toString();
 ---
 
 <!doctype html>
@@ -23,20 +26,25 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={pageDesc} />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0c0a08" />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={site.name} href="/rss.xml" />
 
-    <!-- OG tags -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
-    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={socialImageUrl} />
 
-    <!-- Fonts: Instrument Serif + Inter + JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -44,7 +52,6 @@ const currentPath = Astro.url.pathname;
       rel="stylesheet"
     />
 
-    <!-- Prevent theme-flash: read stored preference before paint -->
     <script is:inline>
       (function () {
         try {
@@ -60,6 +67,7 @@ const currentPath = Astro.url.pathname;
     <ClientRouter />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="mx-auto flex min-h-dvh max-w-[720px] flex-col px-6 sm:px-8">
       <header
         class="flex items-center justify-between border-b py-5"
@@ -73,27 +81,29 @@ const currentPath = Astro.url.pathname;
         >
           {site.name}
         </a>
-        <div class="flex items-center gap-6 text-[13.5px]">
-          {
-            nav.map((item) => {
-              const active = currentPath === item.href || currentPath.startsWith(item.href);
-              return (
-                <a
-                  href={item.href}
-                  class="transition-colors hover:opacity-100"
-                  style={`color: ${active ? 'var(--accent)' : 'var(--fg-muted)'};`}
-                  aria-current={active ? 'page' : undefined}
-                >
-                  {item.label}
-                </a>
-              );
-            })
-          }
+        <div class="flex items-center gap-4">
+          <nav aria-label="Primary" class="flex items-center gap-6 text-[13.5px]">
+            {
+              nav.map((item) => {
+                const active = currentPath === item.href || currentPath.startsWith(item.href);
+                return (
+                  <a
+                    href={item.href}
+                    class="transition-colors hover:opacity-100"
+                    style={`color: ${active ? 'var(--accent)' : 'var(--fg-muted)'};`}
+                    aria-current={active ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })
+            }
+          </nav>
           <ThemeToggle />
         </div>
       </header>
 
-      <main class="flex-1 py-10 sm:py-14">
+      <main id="main-content" class="flex-1 py-10 sm:py-14">
         <slot />
       </main>
 

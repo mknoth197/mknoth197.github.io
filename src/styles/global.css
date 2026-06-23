@@ -204,6 +204,43 @@ a {
 }
 
 /* =============================================================
+   Skills grid (About)
+   ------------------------------------------------------------- */
+.skills-grid {
+  margin: 0.4em 0 1.4em;
+}
+.skills-grid > div {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  gap: 0.4rem 1.5rem;
+  padding: 0.8em 0;
+  border-top: 1px solid var(--border);
+}
+.skills-grid > div:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.skills-cat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  padding-top: 3px;
+}
+.skills-list {
+  color: var(--fg-muted);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+@media (max-width: 560px) {
+  .skills-grid > div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+    padding: 0.7em 0;
+  }
+}
+
+/* =============================================================
    Motion — respect reduced-motion
    ------------------------------------------------------------- */
 @keyframes pulse-dot {

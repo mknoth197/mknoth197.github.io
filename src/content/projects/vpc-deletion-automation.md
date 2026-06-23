@@ -1,8 +1,8 @@
 ---
 title: "Account & VPC Deletion Automation"
-summary: "Replaced a manual hour-long Account and VPC deletion process with an event-driven system built on AWS Step Functions and Lambda, reducing execution time from one hour to seconds, eliminating human error, and improving reliability through automated state management and fault-tolerant orchestration. Also drove the enterprise DNS monitoring strategy and the DNS domain takeover prevention initiative, implementing automated verification and cleanup to eliminate subdomain hijacking risk."
+summary: "On the Landing Zone team I owned AWS account automation and the operational plumbing thousands of engineers depended on daily. Replaced a manual, hour-long account and VPC deletion process with an event-driven Step Functions and Lambda system (hours to seconds), designed out DNS subdomain-hijacking risk across 908 hosted zones, and cut developer onboarding from hours to minutes with Dev Containers."
 period: "2023 – 2025"
-stack: ["step-functions", "lambda", "event-driven", "python"]
+stack: ["step-functions", "lambda", "event-driven", "python", "route53", "dev-containers"]
 metric:
   value: "hrs → s"
   label: "Execution time"
@@ -12,14 +12,14 @@ order: 3
 
 ## Scope
 
-Deleting accounts and VPCs sounds mundane until it becomes a repeated operational task with real blast radius. The original process was slow, manual, and easy to get wrong under pressure.
+On the Landing Zone team I owned AWS account automation and the operational plumbing that thousands of engineers depended on daily. Deleting accounts and VPCs sounds mundane until it becomes a repeated task with real blast radius — the original process was slow, manual, and easy to get wrong under pressure.
 
 ## What I built
 
-- An event-driven workflow using Step Functions and Lambda to coordinate deletion steps safely and consistently.
-- Automated state management and retry behavior so operators were not hand-driving long-lived infrastructure tasks.
-- Adjacent DNS monitoring and domain takeover prevention work to catch stale or unsafe configurations before they became security incidents.
+- An **event-driven workflow** on AWS Step Functions and Lambda that coordinates account and VPC deletion safely and consistently, dropping execution time from **about an hour to seconds** and removing human error from the path.
+- A **DNS subdomain-hijacking defense**: audited **2,678 DNS forwarders across 908 hosted zones** and built automated verification and cleanup with the on-prem DNS and security teams, eliminating takeover risk.
+- **Dev Containers** for the engineering org, cutting developer onboarding from hours to minutes with consistent, reproducible environments.
 
 ## Outcome
 
-Execution time dropped from roughly an hour to seconds, human error was largely removed from the path, and the surrounding DNS automation reduced subdomain hijacking risk across the environment.
+Long-lived, high-blast-radius infrastructure tasks became fast and safe by default, a whole class of DNS takeover risk was designed out, and new engineers got productive in minutes instead of hours.

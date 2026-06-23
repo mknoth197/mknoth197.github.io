@@ -1,6 +1,6 @@
 ---
 title: "License Management — Data Platform"
-summary: "On the License Management team — behind a high-volume customer-facing web application accounting for roughly 10% of John Deere's annual revenue — I built a secure data-ingestion pipeline during a hackathon that proved the case for making license data available to internal teams while preserving isolation and access controls. The prototype directly contributed to forming the enterprise Data Engineering team."
+summary: "On the License Management team — behind a high-volume customer-facing web application accounting for roughly 10% of John Deere’s annual revenue — I built a secure data-ingestion pipeline during a hackathon that proved the case for making license data available to internal teams while preserving isolation and access controls. The prototype directly contributed to forming the enterprise Data Engineering team."
 period: "2021 – 2023"
 stack: ["java", "aws", "data-pipeline", "oauth"]
 metric:

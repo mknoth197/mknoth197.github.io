@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import remarkSmartypants from 'remark-smartypants';
 
 // If you ever rename the repo or move to a project page, update these two lines.
 // For a user site (username.github.io), site = 'https://username.github.io' and base is omitted.
@@ -16,6 +17,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   markdown: {
+    remarkPlugins: [remarkSmartypants],
     shikiConfig: {
       themes: {
         light: 'github-light',

@@ -48,9 +48,17 @@ const socialImageUrl = new URL('/social-card.png', Astro.site).toString();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
 
     <script is:inline>
       (function () {
@@ -59,6 +67,8 @@ const socialImageUrl = new URL('/social-card.png', Astro.site).toString();
           const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
           const theme = stored || (prefersLight ? 'light' : 'dark');
           document.documentElement.setAttribute('data-theme', theme);
+          const m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute('content', theme === 'light' ? '#fbf8f1' : '#0c0a08');
         } catch (_) {}
       })();
     </script>
@@ -89,8 +99,7 @@ const socialImageUrl = new URL('/social-card.png', Astro.site).toString();
                 return (
                   <a
                     href={item.href}
-                    class="transition-colors hover:opacity-100"
-                    style={`color: ${active ? 'var(--accent)' : 'var(--fg-muted)'};`}
+                    class="nav-link"
                     aria-current={active ? 'page' : undefined}
                   >
                     {item.label}

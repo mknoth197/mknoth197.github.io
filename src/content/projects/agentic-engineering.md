@@ -1,11 +1,11 @@
 ---
 title: "Agentic Engineering — AI as a First-Class SDLC Participant"
-summary: "On a three-person tiger team chartered by senior leadership, I'm defining how agentic AI reshapes the software development lifecycle — then building the harness, context substrate, and workflows that turn those findings into practice. I architect the infrastructure that makes AI agents safe, trustworthy, and effective: context platforms, orchestrators that plan and verify, and guardrails for security, observability, and compliance. The throughline is replacing 'AI helps' vibes with objective evidence — and operationalizing the finding that context, not the model, is the load-bearing layer of agentic delivery."
+summary: "On a three-person tiger team chartered by senior leadership, I’m defining how agentic AI reshapes the software development lifecycle — then building the harness, context substrate, and workflows that turn those findings into practice. I architect the infrastructure that makes AI agents safe, trustworthy, and effective: context platforms, orchestrators that plan and verify, and guardrails for security, observability, and compliance. The throughline is replacing ‘AI helps’ vibes with objective evidence — and operationalizing the finding that context, not the model, is the load-bearing layer of agentic delivery."
 period: "2026 – present"
 stack: ["claude-code", "codex", "copilot", "mcp", "github-actions", "knowledge-graph"]
 metric:
   value: "vibes → evidence"
-  label: "Measuring AI's real impact"
+  label: "Measuring AI’s real impact"
 featured: true
 order: 0
 ---

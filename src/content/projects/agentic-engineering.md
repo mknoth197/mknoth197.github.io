@@ -1,8 +1,8 @@
 ---
 title: "Agentic Engineering — AI as a First-Class SDLC Participant"
-summary: "On a new enterprise AI team, I'm defining how software gets built when AI is a first-class participant in the SDLC — the control systems that make agent-written code reliable enough to ship, and the measurement that proves what actually works instead of trusting vibes. I originated enforcement patterns the team adopted as practice, and I'm building a provider-agnostic instruction layer and evaluation framework that span multiple AI coding assistants. Underneath it is context infrastructure: a knowledge layer that gives agents the institutional knowledge usually trapped in senior engineers' heads."
+summary: "On a three-person tiger team chartered by senior leadership, I'm defining how agentic AI reshapes the software development lifecycle — then building the harness, context substrate, and workflows that turn those findings into practice. I architect the infrastructure that makes AI agents safe, trustworthy, and effective: context platforms, orchestrators that plan and verify, and guardrails for security, observability, and compliance. The throughline is replacing 'AI helps' vibes with objective evidence — and operationalizing the finding that context, not the model, is the load-bearing layer of agentic delivery."
 period: "2026 – present"
-stack: ["claude-code", "copilot", "codex", "promptfoo", "github-actions", "knowledge-graphs"]
+stack: ["claude-code", "codex", "copilot", "mcp", "github-actions", "knowledge-graph"]
 metric:
   value: "vibes → evidence"
   label: "Measuring AI's real impact"
@@ -10,26 +10,26 @@ featured: true
 order: 0
 ---
 
-## Scope
+## Charter
 
-A new enterprise AI team with a deceptively simple charter: figure out what software development looks like when AI is a first-class participant in the SDLC — and turn "the teams getting real value from AI" into a repeatable standard instead of tribal knowledge. The work spans both halves of that problem: the technical control systems that make agents reliable, and the measurement that proves what actually works.
+A three-person special-ops tiger team, chartered by senior leadership, with a deceptively simple mandate: define how agentic AI reshapes the SDLC, then build the harness, context substrate, and workflows that turn those findings into practice. The work now informs the enterprise AI strategy. It splits cleanly into two halves — the systems that make agents reliable, and the measurement that proves what actually works.
 
-## Harness engineering
+## The harness
 
-Most of the conversation about AI coding fixates on the model. I focus on the *harness* — the system of guides, hooks, and feedback sensors around the model that actually determines whether agent output is good enough to ship. I originated a principle the team adopted as practice: **hooks always execute; instructions are interpreted.** Anything that must hold gets enforced deterministically at the agent's lifecycle — before a tool runs, after a file is written, when the agent tries to stop — rather than left to model discretion. I also demonstrated cross-model adversarial review, using one model to critique another's output to break the self-evaluation bias a model has when grading its own work.
+Most of the conversation about AI coding fixates on the model. I focus on the *harness* — the system of guides, hooks, and feedback sensors around the model that decides whether agent output is good enough to ship. I authored a **seven-layer reference model** that characterizes the harness by depth, from model runtime up through operational observability, giving leadership a shared vocabulary for evaluating AI-tooling investments across the SDLC. The principle I keep enforcing: **hooks always execute; instructions are interpreted** — anything that must hold gets enforced deterministically at the agent's lifecycle (before a tool runs, after a file is written, when the agent tries to stop) rather than left to model discretion.
 
-## Provider-agnostic by design
+## Context as the load-bearing layer
 
-Engineering orgs don't standardize on a single AI tool, and the landscape shifts monthly. So I'm building a provider-agnostic instruction and skill layer: one version-controlled definition of "how we build software here" that works across multiple coding assistants — Claude Code, Copilot, Codex — instead of every team maintaining a separate proprietary file per tool.
+I architected the team's context platform for AI-native delivery: a **four-layer knowledge system** — a durable wiki, local hybrid search, a structural knowledge graph, and agent memory managed with write-select-compress strategies — fronted by a **harness-agnostic agent contract** and version-pinned skill management. It operationalizes the finding that **context, not the model, is the load-bearing layer** of agentic delivery: agents retrieve only the relevant subgraph instead of ingesting everything, and the contract lets the same institutional knowledge serve Claude Code, Copilot, or Codex without per-tool rework.
 
 ## Beyond vibes — measuring AI impact
 
-"Claude made me 3x faster" is an anecdote, not a measurement. I'm helping build the evaluation framework that replaces subjective tool comparison with objective, repeatable evidence: normalize instructions, context, and hooks across harnesses so they're on equal footing, then measure which harness-and-model combinations genuinely solve problems faster and respect engineering policy. The same thread runs through an internal platform that turns "AI helps" claims into measurable signals about developer productivity.
+"Claude made me 3x faster" is an anecdote, not a measurement. I designed a measurement framework of **eleven falsifiable hypotheses** spanning telemetry, workflow signals, and SDLC data — converting subjective AI-productivity claims into objective DORA and developer-experience metrics across the cohort. The same discipline drives tooling decisions: normalize instructions, context, and hooks across harnesses so they sit on equal footing, then measure which harness-and-model combinations genuinely solve problems faster and respect engineering policy, instead of arguing from gut feel.
 
-## Context as infrastructure
+## Agents doing the unglamorous work
 
-Agent output improves dramatically when the agent can reach the institutional knowledge that usually lives in senior engineers' heads. I architected a federated knowledge layer — a centralized, version-controlled knowledge base structured as a typed knowledge graph with semantic search, sub-moduled into product repositories so agents retrieve only the relevant subgraph instead of ingesting everything. Every entry carries a confidence score, so knowledge decay is visible and can be pruned automatically before the base rots.
+A harness only earns its keep when agents do real work safely. I standardized pre-merge review by packaging agent-driven review as **reusable Claude Code skills and slash commands**, so every contributor gets a consistent automated pass before CI. I established the team's pattern for **recurring agentic work in CI** — a weekly knowledge-graph refresh that runs as a scheduled, GitHub-hosted agentic workflow, with no API keys to provision and no manual upkeep. And I collapsed dependency-update toil with a **subagent that fans out per pull request** into isolated workspaces, applies repository conventions, and fixes failing checks before a human ever looks.
 
-## Bringing the org along
+## The throughline
 
-I founded and facilitate a recurring internal technical forum on agentic engineering, and authored a talk framework — *The Agentic Engineering Progression* — that walks engineers from a bare LLM through tool-aware models, instrumented harnesses, and confident continuous delivery to objective evaluation. The throughline is the same one that's run through the rest of my work: make the hard, important thing also the easy, default thing.
+Bringing AI-native development to a 45-engineer cohort — faster onboarding, lower defect rates — comes back to the same thing that's run through the rest of my work: make the hard, important thing also the easy, default thing.

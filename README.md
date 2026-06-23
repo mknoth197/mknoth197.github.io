@@ -1,6 +1,6 @@
 # mitchknoth.dev
 
-Personal site. Astro 5 + Tailwind v4 + MDX, dark-first with a light mode toggle. Deployed to GitHub Pages via Actions.
+Personal site. Astro 6 + Tailwind v4 + MDX, dark-first with a light mode toggle. Deployed to GitHub Pages via Actions.
 
 ## Quick start
 

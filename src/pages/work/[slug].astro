@@ -42,6 +42,16 @@ const { Content } = await render(project);
           </div>
         )
       }
+
+      {
+        project.data.href && (
+          <p class="mt-6 text-[12px]" style="font-family: var(--font-mono);">
+            <a href={project.data.href} target="_blank" rel="noreferrer" style="color: var(--accent);">
+              Visit project ↗
+            </a>
+          </p>
+        )
+      }
     </header>
 
     <Content />

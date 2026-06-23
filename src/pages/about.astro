@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site } from '../config';
 
 const certs = [
   { name: 'AWS Certified DevOps Engineer – Professional', year: 'May 2026' },
@@ -54,13 +53,6 @@ const certs = [
       <div><span class="skills-cat">Observability</span><span class="skills-list">CloudWatch, Datadog, Splunk, Grafana, AWS X-Ray</span></div>
       <div><span class="skills-cat">Languages</span><span class="skills-list">Python, Java, JavaScript, TypeScript</span></div>
     </div>
-
-    <h2>Elsewhere</h2>
-    <ul>
-      <li><a href={site.github} target="_blank" rel="noreferrer">GitHub</a></li>
-      <li><a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></li>
-      <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-    </ul>
 
     <h2>About this site</h2>
     <p>

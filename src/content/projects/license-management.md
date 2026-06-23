@@ -8,6 +8,7 @@ metric:
   label: "App's share of JD revenue"
 featured: false
 order: 4
+era: platform
 ---
 
 ## Scope

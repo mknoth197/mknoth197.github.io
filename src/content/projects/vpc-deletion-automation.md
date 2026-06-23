@@ -8,6 +8,7 @@ metric:
   label: "Execution time"
 featured: true
 order: 3
+era: platform
 ---
 
 ## Scope

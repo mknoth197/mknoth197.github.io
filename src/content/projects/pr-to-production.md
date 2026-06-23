@@ -8,6 +8,7 @@ metric:
   label: "Monitored for SoD"
 featured: true
 order: 1
+era: ai
 ---
 
 ## Scope

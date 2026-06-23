@@ -17,7 +17,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   markdown: {
-    remarkPlugins: [remarkSmartypants],
+    // remark-smartypants ships unified types that don't line up with Astro's stricter
+    // Root-node remark types; the plugin is correct at runtime, so cast past the mismatch.
+    remarkPlugins: [/** @type {any} */ (remarkSmartypants)],
     shikiConfig: {
       themes: {
         light: 'github-light',

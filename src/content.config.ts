@@ -30,6 +30,8 @@ const projects = defineCollection({
     href: z.url().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(99),
+    era: z.enum(['ai', 'platform']).default('platform'),
+    roleTag: z.string().optional(),
   }),
 });
 

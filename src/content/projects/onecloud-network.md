@@ -8,6 +8,7 @@ metric:
   label: "Annual cloud spend"
 featured: true
 order: 2
+era: platform
 ---
 
 ## Scope

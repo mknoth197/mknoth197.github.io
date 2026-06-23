@@ -8,6 +8,7 @@ metric:
   label: "Measuring AI’s real impact"
 featured: true
 order: 0
+era: ai
 ---
 
 ## Charter

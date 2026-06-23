@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import CurrentlyPill from '../components/CurrentlyPill.astro';
+import { site } from '../config';
 
 const certs = [
   { name: 'AWS Certified DevOps Engineer – Professional', year: 'May 2026' },
@@ -8,33 +10,113 @@ const certs = [
   { name: 'AWS Certified Solutions Architect – Associate', year: 'Mar 2024' },
   { name: 'AWS Certified Cloud Practitioner – Foundational', year: 'Nov 2021' },
 ];
+
+// "At a glance" — front-loaded facts for a five-second skim. Rendered with the
+// existing .skills-grid idiom (mono label column + value column, hairline rows).
+const glance = [
+  { k: 'Role', v: 'Cloud Software Engineer, John Deere · 6+ yrs' },
+  { k: 'Based', v: 'Des Moines, Iowa' },
+  { k: 'Focus', v: 'Agentic AI in the SDLC — harness, context, measurement' },
+  { k: 'Currently', v: 'One of three on a tiger team defining how AI reshapes the way we ship software' },
+  {
+    k: 'Credentials',
+    v: '5× AWS certified, Foundational → Professional · B.S. Software Engineering, Iowa State (Cum Laude)',
+  },
+];
+
+// Eyebrow styling reused for the two dated act labels. Inline so it wins over
+// the global .content cascade without adding a new class or component.
+const eyebrow =
+  'font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-dim); margin: 2.6em 0 0.3em;';
 ---
 
-<Base title="About" description="Cloud software engineer at John Deere. 6+ years shipping platform and DevEx work at enterprise scale.">
+<Base
+  title="About"
+  description="Cloud software engineer at John Deere making AI a first-class participant in the software development lifecycle — built on six years of platform and developer-experience work."
+>
+  <CurrentlyPill text={site.currently} />
+
+  <h1 class="prose-serif mb-6 text-[40px] leading-[1.1] sm:text-[44px]" style="color: var(--fg);">
+    I’m Mitch — making <em style="color: var(--accent);">AI</em> a first-class participant in how we
+    ship software.
+  </h1>
+
+  <div class="skills-grid" style="margin-top: 1.6rem;">
+    {
+      glance.map((row) => (
+        <div>
+          <span class="skills-cat">{row.k}</span>
+          <span class="skills-list">{row.v}</span>
+        </div>
+      ))
+    }
+    <div>
+      <span class="skills-cat">Links</span>
+      <span class="skills-list">
+        <a href={site.github} target="_blank" rel="noreferrer" style="color: var(--accent);">GitHub</a>
+        <span style="color: var(--fg-dim);"> · </span>
+        <a href={site.linkedin} target="_blank" rel="noreferrer" style="color: var(--accent);">LinkedIn</a>
+        <span style="color: var(--fg-dim);"> · </span>
+        <a href={`mailto:${site.email}`} style="color: var(--accent);">Email</a>
+      </span>
+    </div>
+  </div>
+
   <section class="content">
-    <h1 class="prose-serif mb-8 text-[40px] leading-[1.1]" style="color: var(--fg);">About</h1>
+    <p style={eyebrow}>2026 — present</p>
+    <h2 style="margin-top: 0;">The AI-Era SDLC</h2>
 
     <p>
-      I’m Mitch — a cloud software engineer at John Deere with 6+ years shipping platform and
-      developer experience work at enterprise scale. I live in Des Moines, Iowa.
+      My current chapter is a three-person tiger team, chartered by senior leadership, with a
+      deceptively large question: how does agentic AI reshape the software development lifecycle —
+      and what do we build so the answer becomes practice instead of a slide? In practice that’s a
+      harness, a context substrate, and the workflows that connect them, now serving a cohort of
+      around 45 engineers and feeding the enterprise AI strategy.
     </p>
 
     <p>
-      My current chapter is a three-person tiger team chartered to figure out how agentic AI
-      reshapes the software development lifecycle — and to build the harness, context substrate, and
-      workflows that turn those findings into practice. The question I keep pulling on: how do we
-      take something that’s mostly been measured by vibes and build empirical metrics around it? The
-      other half of the answer keeps coming back to context. Inspired by Karpathy’s writing on LLM
-      wikis, I’ve become convinced that context — not the model — is the load-bearing layer of
-      agentic delivery: AI output improves dramatically when it can reach the kind of “pet
-      knowledge” teams usually keep in human heads.
+      Two convictions drive most of it. The first is that an agent is a model <em>plus a harness</em>
+      — the guides, hooks, skills, tests, reviews, and judges around the model — and the harness is
+      where the real engineering lives. Hooks always execute; instructions only get interpreted, so
+      anything that has to hold gets enforced deterministically rather than left to a model’s
+      discretion. The second is that context, not the model, is the load-bearing layer of agentic
+      delivery. Karpathy’s writing on LLM wikis matched what I keep seeing in practice: AI output
+      improves dramatically the moment an agent can reach the “pet knowledge” a team usually keeps in
+      human heads.
     </p>
 
     <p>
-      Before the AI team, I spent most of my time on <a href="/work/">platform work</a> — PR-to-prod
-      governance at 50,000+ repos, VPC consolidation that saved seven figures, DNS migrations
-      touching six-figure vulnerability counts. The common thread across all of it is the same: make
-      the hard, important thing also be the easy, default thing.
+      And the throughline underneath all of it is a refusal to run on vibes. “AI made me 3x faster”
+      is an anecdote, not a measurement. The interesting work is turning that into something
+      falsifiable — replacing how it <em>felt</em> with evidence you could be proven wrong about.
+    </p>
+
+    <p style={eyebrow}>2019 — 2025</p>
+    <h2 style="margin-top: 0;">Platform &amp; Cloud Foundations</h2>
+
+    <p>
+      You don’t get to redesign the SDLC until you’ve lived in its hardest corners. Before the AI
+      work, I spent most of six years on <a href="/work/">platform and developer-experience work</a>
+      at enterprise scale — PR-to-production governance that monitored 50,000+ repositories for
+      separation-of-duties compliance and cut audit-prep time by roughly three-quarters; a network
+      consolidation across about 2,000 VPCs that took seven figures a year out of cloud spend; a DNS
+      migration that remediated 140,000+ security vulnerabilities at 100% uptime through the cutover.
+    </p>
+
+    <p>
+      Different decade of tooling, same instinct that runs through the AI work: make the hard,
+      important thing also the easy, default thing. Compliance you don’t have to remember. Renewals
+      that don’t need a human in the loop. Onboarding that goes from hours to minutes.
+    </p>
+
+    <blockquote>
+      I’m not interested in pulling humans out of the loop. The target is complementarity — higher
+      confidence, higher quality, lower cognitive load on the person doing the work.
+    </blockquote>
+
+    <p>
+      That was true when the output was a pipeline nobody had to think about. It’s just as true now
+      that the output is an agent.
     </p>
 
     <h2>Credentials</h2>
@@ -54,10 +136,10 @@ const certs = [
       <div><span class="skills-cat">Languages</span><span class="skills-list">Python, Java, JavaScript, TypeScript</span></div>
     </div>
 
-    <h2>About this site</h2>
+    <h2>Colophon</h2>
     <p>
-      Built with Astro, Tailwind, and MDX. Hosted on GitHub Pages. Source is public — see the link
-      in the footer.
+      Built with Astro, Tailwind, and MDX; hosted on GitHub Pages. The source is public — see the
+      link in the footer.
     </p>
   </section>
 </Base>

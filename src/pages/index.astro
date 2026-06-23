@@ -8,6 +8,16 @@ import { site } from '../config';
 import { getProjects, getPublishedPosts } from '../lib/content';
 
 const recent = (await getPublishedPosts()).slice(0, 3);
+
+// Home-only tightened metric-card labels: outcome-first so each card parses in
+// ~2s. Keyed by project id; falls back to the project's own metric.label.
+const cardLabel: Record<string, string> = {
+  'agentic-engineering': 'Replacing AI-productivity anecdotes with measurement',
+  'pr-to-production': 'Separation-of-duties compliance, audit prep down ~75%',
+  'onecloud-network': 'Annual cloud spend, ~2,000 VPCs consolidated',
+  'vpc-deletion-automation': 'Account + VPC teardown, automated end to end',
+};
+
 const featuredMetrics = (await getProjects())
   .filter((project) => project.data.featured && project.data.metric)
   .slice(0, 4);
@@ -25,35 +35,19 @@ const featuredMetrics = (await getProjects())
     </h1>
 
     <p class="max-w-[60ch] text-[16.5px] leading-[1.7] text-pretty" style="color: var(--fg-muted);">
-      I’m a cloud software engineer at John Deere. I’ve spent the last six years on platform and
-      developer experience work — shipping compliance automation, cloud networking at scale, and the
-      unglamorous plumbing that lets other teams move fast. I’m now focused on something harder:
-      measuring what effective AI usage actually looks like across the enterprise, and building the
-      context infrastructure that makes it real.
+      Most claims about AI and engineering run on vibes. I’d rather show the work — six years
+      turning “this should be faster” into measured outcomes, now spent on the harder half: making
+      agent output safe enough to ship. <a href="/about/" style="color: var(--accent);">More about how I got here →</a>
     </p>
   </section>
 
-  <SectionLabel label="Recent writing" href="/writing/" />
-  <div>
-    {
-      recent.length === 0 ? (
-        <p class="text-[14px]" style="color: var(--fg-dim);">
-          First post landing soon — check back shortly.
-        </p>
-      ) : (
-        recent.map((post) => (
-          <PostRow
-            href={`/writing/${post.id}/`}
-            date={post.data.date}
-            title={post.data.title}
-            readingTime={post.data.readingTime}
-          />
-        ))
-      )
-    }
-  </div>
-
   <SectionLabel label="Selected work" href="/work/" />
+  <p
+    class="mb-5 -mt-3 text-[15px] italic"
+    style="color: var(--fg-muted); font-family: var(--font-serif);"
+  >
+    The claim — and the receipts.
+  </p>
   <div
     class="grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border sm:grid-cols-2"
     style="background: var(--border); border-color: var(--border);"
@@ -62,9 +56,40 @@ const featuredMetrics = (await getProjects())
       featuredMetrics.map((project) => (
         <MetricCard
           value={project.data.metric!.value}
-          label={`${project.data.metric!.label} - ${project.data.title}`}
+          label={cardLabel[project.id] ?? project.data.metric!.label}
         />
       ))
     }
   </div>
+
+  {/* Writing: routes in-content even at 0 published posts, with no apologetic
+      placeholder; upgrades to a real feed once a post ships. */}
+  {
+    recent.length === 0 ? (
+      <>
+        <SectionLabel label="Writing" />
+        <p
+          class="-mt-3 max-w-[60ch] text-[15px] leading-[1.7]"
+          style="color: var(--fg-muted);"
+        >
+          Empirical notes on agentic delivery — starting with how you actually measure it.
+          <a href="/writing/" style="color: var(--accent);"> First essays landing soon →</a>
+        </p>
+      </>
+    ) : (
+      <>
+        <SectionLabel label="Recent writing" href="/writing/" />
+        <div>
+          {recent.map((post) => (
+            <PostRow
+              href={`/writing/${post.id}/`}
+              date={post.data.date}
+              title={post.data.title}
+              readingTime={post.data.readingTime}
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
 </Base>

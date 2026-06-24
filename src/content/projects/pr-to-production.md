@@ -23,8 +23,8 @@ This work sits in the gap between source control and production, the part of the
 
 ## Incident response
 
-- Led **blast-radius analysis** for an AWS Config Aggregator secrets-exposure incident: mined Splunk telemetry to pin down **443 impacted repositories and 31,000+ workflow executions**, then shipped a dynamic burndown dashboard tracking remediation enterprise-wide.
-- Led **P1 incident response** for a repository-settings policy rollout that overreached ~400 repos beyond its intended scope: coordinating remediation, driving the postmortem, and reorganizing the team's operating model to prevent recurrence.
+- Led **blast-radius analysis** for a secrets-exposure incident: scoped the impact to **a few hundred repositories and tens of thousands of workflow executions**, then shipped a dynamic burndown dashboard tracking remediation enterprise-wide.
+- Led **P1 incident response** for a repository-settings policy rollout that overreached several hundred repositories beyond its intended scope: coordinating remediation, driving the postmortem, and reorganizing the team's operating model to prevent recurrence.
 
 ## Beyond the platform
 

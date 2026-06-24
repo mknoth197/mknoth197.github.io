@@ -1,6 +1,6 @@
 ---
-title: "Global Gateway — External API Platform"
-summary: "On the Global Gateway API platform, I architected the platform's first external-facing API — designed from the start with role-based authorization and comprehensive audit logging — so dealers could safely access sales-lead data at John Deere Financial."
+title: "Global Gateway – External API Platform"
+summary: "On the Global Gateway API platform, I architected the platform's first external-facing API (designed from the start with role-based authorization and audit logging) so dealers could safely access sales-lead data at John Deere Financial."
 period: "2019 – 2021"
 stack: ["java", "api-gateway", "oauth", "rbac"]
 featured: false
@@ -11,11 +11,11 @@ roleTag: "First external API"
 
 ## Scope
 
-This was about safely exposing a selected business capability *outside* the company — opening dealer access to sales-lead data without treating security and observability as afterthoughts.
+This was about safely exposing a selected business capability *outside* the company: opening dealer access to sales-lead data without treating security and observability as afterthoughts.
 
 ## What I built
 
-- The platform's **inaugural external API**, architected with **role-based authorization** and **comprehensive audit logging** from day one.
+- The platform's **inaugural external API**, architected with **role-based authorization** and **audit logging** from day one.
 
 ## Outcome
 

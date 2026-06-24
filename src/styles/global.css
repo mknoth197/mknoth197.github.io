@@ -55,7 +55,7 @@
   --fg: var(--color-fg-light);
   --fg-muted: var(--color-fg-muted-light);
   --fg-dim: var(--color-fg-dim-light);
-  --accent: var(--color-accent-dim);
+  --accent: #866214; /* darkened from #a07a26 to clear WCAG AA (4.5:1) for text/links on light bg */
   --accent-dim: var(--color-accent);
 }
 

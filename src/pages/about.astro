@@ -11,12 +11,12 @@ const certs = [
   { name: 'AWS Certified Cloud Practitioner – Foundational', year: 'Nov 2021' },
 ];
 
-// "At a glance" — front-loaded facts for a five-second skim. Rendered with the
+// "At a glance" - front-loaded facts for a five-second skim. Rendered with the
 // existing .skills-grid idiom (mono label column + value column, hairline rows).
 const glance = [
   { k: 'Role', v: 'Cloud Software Engineer, John Deere · 6+ yrs' },
   { k: 'Based', v: 'Des Moines, Iowa' },
-  { k: 'Focus', v: 'Agentic AI in the SDLC — harness, context, measurement' },
+  { k: 'Focus', v: 'Agentic AI in the SDLC: harness, context, measurement' },
   { k: 'Currently', v: 'One of three on a tiger team defining how AI reshapes the way we ship software' },
   {
     k: 'Credentials',
@@ -32,12 +32,12 @@ const eyebrow =
 
 <Base
   title="About"
-  description="Cloud software engineer at John Deere making AI a first-class participant in the software development lifecycle — built on six years of platform and developer-experience work."
+  description="Cloud software engineer at John Deere making AI a first-class participant in the software development lifecycle, built on six years of platform and developer-experience work."
 >
   <CurrentlyPill text={site.currently} />
 
   <h1 class="prose-serif mb-6 text-[40px] leading-[1.1] sm:text-[44px]" style="color: var(--fg);">
-    I’m Mitch — making <em style="color: var(--accent);">AI</em> a first-class participant in how we
+    I’m Mitch, making <em style="color: var(--accent);">AI</em> a first-class participant in how we
     ship software.
   </h1>
 
@@ -53,30 +53,30 @@ const eyebrow =
     <div>
       <span class="skills-cat">Links</span>
       <span class="skills-list">
-        <a href={site.github} target="_blank" rel="noreferrer" style="color: var(--accent);">GitHub</a>
+        <a href={site.github} target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">GitHub</a>
         <span style="color: var(--fg-dim);"> · </span>
-        <a href={site.linkedin} target="_blank" rel="noreferrer" style="color: var(--accent);">LinkedIn</a>
+        <a href={site.linkedin} target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">LinkedIn</a>
         <span style="color: var(--fg-dim);"> · </span>
-        <a href={`mailto:${site.email}`} style="color: var(--accent);">Email</a>
+        <a href={`mailto:${site.email}`} style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">Email</a>
       </span>
     </div>
   </div>
 
   <section class="content">
-    <p style={eyebrow}>2026 — present</p>
+    <p style={eyebrow}>2026 – present</p>
     <h2 style="margin-top: 0;">The AI-Era SDLC</h2>
 
     <p>
       My current chapter is a three-person tiger team, chartered by senior leadership, with a
-      deceptively large question: how does agentic AI reshape the software development lifecycle —
-      and what do we build so the answer becomes practice instead of a slide? In practice that’s a
+      deceptively large question: how does agentic AI reshape the software development lifecycle, and
+      what do we build so the answer becomes practice instead of a slide? In practice that’s a
       harness, a context substrate, and the workflows that connect them, now serving a cohort of
       around 45 engineers and feeding the enterprise AI strategy.
     </p>
 
     <p>
       Two convictions drive most of it. The first is that an agent is a model <em>plus a harness</em>
-      — the guides, hooks, skills, tests, reviews, and judges around the model — and the harness is
+      (the guides, hooks, skills, tests, reviews, and judges around the model), and the harness is
       where the real engineering lives. Hooks always execute; instructions only get interpreted, so
       anything that has to hold gets enforced deterministically rather than left to a model’s
       discretion. The second is that context, not the model, is the load-bearing layer of agentic
@@ -88,16 +88,16 @@ const eyebrow =
     <p>
       And the throughline underneath all of it is a refusal to run on vibes. “AI made me 3x faster”
       is an anecdote, not a measurement. The interesting work is turning that into something
-      falsifiable — replacing how it <em>felt</em> with evidence you could be proven wrong about.
+      falsifiable: replacing how it <em>felt</em> with evidence you could be proven wrong about.
     </p>
 
-    <p style={eyebrow}>2019 — 2025</p>
+    <p style={eyebrow}>2019 – 2025</p>
     <h2 style="margin-top: 0;">Platform &amp; Cloud Foundations</h2>
 
     <p>
       You don’t get to redesign the SDLC until you’ve lived in its hardest corners. Before the AI
       work, I spent most of six years on <a href="/work/">platform and developer-experience work</a>
-      at enterprise scale — PR-to-production governance that monitored 50,000+ repositories for
+      at enterprise scale: PR-to-production governance that monitored 50,000+ repositories for
       separation-of-duties compliance and cut audit-prep time by roughly three-quarters; a network
       consolidation across about 2,000 VPCs that took seven figures a year out of cloud spend; a DNS
       migration that remediated 140,000+ security vulnerabilities at 100% uptime through the cutover.
@@ -110,7 +110,7 @@ const eyebrow =
     </p>
 
     <blockquote>
-      I’m not interested in pulling humans out of the loop. The target is complementarity — higher
+      I’m not interested in pulling humans out of the loop. The target is complementarity: higher
       confidence, higher quality, lower cognitive load on the person doing the work.
     </blockquote>
 
@@ -138,7 +138,7 @@ const eyebrow =
 
     <h2>Colophon</h2>
     <p>
-      Built with Astro, Tailwind, and MDX; hosted on GitHub Pages. The source is public — see the
+      Built with Astro, Tailwind, and MDX; hosted on GitHub Pages. The source is public; see the
       link in the footer.
     </p>
   </section>

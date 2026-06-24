@@ -1,6 +1,6 @@
 ---
 title: "Account & VPC Deletion Automation"
-summary: "On the Landing Zone team I owned AWS account automation and the operational plumbing thousands of engineers depended on daily. Replaced a manual, hour-long account and VPC deletion process with an event-driven Step Functions and Lambda system (hours to seconds), designed out DNS subdomain-hijacking risk across 908 hosted zones, and cut developer onboarding from hours to minutes with Dev Containers."
+summary: "I owned AWS account automation and the operational plumbing thousands of engineers depended on daily. Replaced a manual, hour-long account and VPC deletion process with an event-driven Step Functions and Lambda system (hours to seconds), designed out DNS subdomain-hijacking risk across 908 hosted zones, and cut developer onboarding from hours to minutes with Dev Containers."
 period: "2023 – 2025"
 stack: ["step-functions", "lambda", "event-driven", "python", "route53", "dev-containers"]
 metric:
@@ -13,7 +13,7 @@ era: platform
 
 ## Scope
 
-On the Landing Zone team I owned AWS account automation and the operational plumbing that thousands of engineers depended on daily. Deleting accounts and VPCs sounds mundane until it becomes a repeated task with real blast radius — the original process was slow, manual, and easy to get wrong under pressure.
+I owned AWS account automation and the operational plumbing that thousands of engineers depended on daily. Deleting accounts and VPCs sounds mundane until it becomes a repeated task with real blast radius. The original process was slow, manual, and easy to get wrong under pressure.
 
 ## What I built
 

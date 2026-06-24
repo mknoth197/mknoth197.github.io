@@ -1,7 +1,7 @@
 export const site = {
   name: 'Mitchell Knoth',
   shortName: 'Mitch',
-  title: 'Mitchell Knoth — Cloud Software Engineer',
+  title: 'Mitchell Knoth – Cloud Software Engineer',
   description:
     'Cloud software engineer. Building toward an SDLC where AI is a first-class participant.',
   location: 'Des Moines, Iowa',

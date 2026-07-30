@@ -221,7 +221,7 @@ button:focus-visible,
   font-size: 0.88em;
   padding: 1em 1.1em;
   border-radius: 6px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   background: var(--bg-elevated) !important;
   overflow-x: auto;
   margin: 1.5em 0;
@@ -230,6 +230,14 @@ button:focus-visible,
   background: transparent;
   border: none;
   padding: 0;
+}
+
+:root[data-theme="dark"] .content pre.astro-code {
+  color: var(--shiki-dark);
+  background: var(--shiki-dark-bg) !important;
+}
+:root[data-theme="dark"] .content pre.astro-code span {
+  color: var(--shiki-dark) !important;
 }
 .content hr {
   border: 0;

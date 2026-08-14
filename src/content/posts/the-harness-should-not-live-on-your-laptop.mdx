@@ -9,8 +9,13 @@ tags: ["ai", "agents", "engineering", "cloud"]
 
 import ArticleToc from '../../components/writing/ArticleToc.astro';
 import ArtifactFlow from '../../components/writing/ArtifactFlow.astro';
-import PracticeCard from '../../components/writing/PracticeCard.astro';
+import ContextPipeline from '../../components/writing/ContextPipeline.astro';
+import DelegationSpectrum from '../../components/writing/DelegationSpectrum.astro';
+import FederationPair from '../../components/writing/FederationPair.astro';
+import HarnessReadiness from '../../components/writing/HarnessReadiness.astro';
+import ReadinessScan from '../../components/writing/ReadinessScan.astro';
 import RelatedWork from '../../components/writing/RelatedWork.astro';
+import RepositoryContract from '../../components/writing/RepositoryContract.astro';
 
 One of my most useful agent runs began while my laptop was closed.
 
@@ -91,29 +96,46 @@ The project harness should not live in an engineer's dotfiles, private prompt co
 
 That does not mean every concern belongs in Git. The repository should hold the declarative contract for working on the product:
 
-- agent instructions and scoped conventions;
-- reusable skills and tool declarations;
-- environment and dependency definitions;
-- architecture descriptions and accepted patterns;
-- named anti-patterns and stop conditions;
-- tests, linters, type checks, and other sensors; and
-- the commands that produce reviewable evidence.
+<RepositoryContract
+  groups={[
+    {
+      label: 'Direction',
+      items: [
+        'agent instructions and scoped conventions;',
+        'reusable skills and tool declarations;',
+      ],
+    },
+    {
+      label: 'Environment',
+      items: [
+        'environment and dependency definitions;',
+        'architecture descriptions and accepted patterns;',
+      ],
+    },
+    {
+      label: 'Guardrails + evidence',
+      items: [
+        'named anti-patterns and stop conditions;',
+        'tests, linters, type checks, and other sensors; and',
+        'the commands that produce reviewable evidence.',
+      ],
+    },
+  ]}
+/>
 
 The cloud platform should supply protected runtime concerns: identity, secret delivery, policy enforcement, compute, isolation, audit records, and ephemeral execution state. The engineer's phone, tablet, or laptop becomes an interface for initiating, steering, reviewing, and approving work. It is no longer the machine that must keep the work alive.
 
 Team knowledge needs a separate ownership boundary. A product repository should not absorb a copy of the organization's entire “brain.” A cloud session can instead open the product repository alongside a separately governed knowledge repository:
 
-```text
-organizational policy and engineering standards
-                    ↓
-team brain: product, ownership, decisions, and business context
-                    ↓
-product repository: code, harness, tests, and local constraints
-                    ↓
-ephemeral cloud-agent sandbox
-                    ↓
-inspectable artifact and accountable review
-```
+<ContextPipeline
+  sources={[
+    'organizational policy and engineering standards',
+    'team brain: product, ownership, decisions, and business context',
+    'product repository: code, harness, tests, and local constraints',
+  ]}
+  runtime="ephemeral cloud-agent sandbox"
+  output="inspectable artifact and accountable review"
+/>
 
 During ordinary product work, the agent should read the team brain without silently rewriting it. If implementation reveals a reusable lesson, the agent can prepare a separate contribution for review. The flow becomes: learn in one task, validate the pattern, promote it to shared context, and make it available to the next engineer and agent.
 
@@ -140,10 +162,14 @@ Work can continue when the initiating device is disconnected or closed. An engin
 
 The level of delegation should remain situational:
 
-- **Capture:** preserve the idea as a context-rich issue.
-- **Explore:** research feasibility and expose assumptions.
-- **Propose:** prepare an inspectable change without publishing it.
-- **Execute:** implement within explicit boundaries and return evidence.
+<DelegationSpectrum
+  modes={[
+    { title: 'Capture', description: 'preserve the idea as a context-rich issue.' },
+    { title: 'Explore', description: 'research feasibility and expose assumptions.' },
+    { title: 'Propose', description: 'prepare an inspectable change without publishing it.' },
+    { title: 'Execute', description: 'implement within explicit boundaries and return evidence.' },
+  ]}
+/>
 
 Ambiguity should default toward capture or proposal. A rough idea should not silently become an unrestricted production change.
 
@@ -179,13 +205,17 @@ Containerizing a poorly understood application did not automatically make it ope
 
 Before a team adds remote autonomy, its repository should be able to answer basic questions:
 
-- Can the application bootstrap in a clean environment?
-- Are dependencies and required services declared?
-- Can a new contributor discover how work should be performed?
-- Can automated checks reject a plausible but incorrect change?
-- Are permissions, approvals, ownership, and escalation paths explicit?
-- Can the agent retrieve current product and business context without guessing?
-- Does the run leave behind evidence another person can inspect?
+<ReadinessScan
+  questions={[
+    'Can the application bootstrap in a clean environment?',
+    'Are dependencies and required services declared?',
+    'Can a new contributor discover how work should be performed?',
+    'Can automated checks reject a plausible but incorrect change?',
+    'Are permissions, approvals, ownership, and escalation paths explicit?',
+    'Can the agent retrieve current product and business context without guessing?',
+    'Does the run leave behind evidence another person can inspect?',
+  ]}
+/>
 
 If a new engineer cannot reliably understand, run, change, and validate the repository, a cloud agent will not repair the missing foundation.
 
@@ -213,8 +243,15 @@ Encrypted secret storage makes today's credential workaround safer. It does not 
 
 Many enterprise applications depend on private package registries, container registries, artifact stores, and internal services. A hosted sandbox needs two separate capabilities to use them:
 
-1. **Reachability:** a controlled network path to the protected resource.
-2. **Authentication:** a short-lived, least-privilege credential for this run and this resource.
+<FederationPair
+  capabilities={[
+    { title: 'Reachability', description: 'a controlled network path to the protected resource.' },
+    {
+      title: 'Authentication',
+      description: 'a short-lived, least-privilege credential for this run and this resource.',
+    },
+  ]}
+/>
 
 An internet-accessible private registry may accept a long-lived token stored as a secret. A registry reachable only through an enterprise network needs private connectivity or a controlled broker as well. Conflating those concerns hides the real platform gap.
 
@@ -228,17 +265,35 @@ The vendor should provide the identity primitive, attestation, policy hooks, and
 
 The cloud sandbox should be ephemeral. Its identity should be ephemeral too.
 
-<PracticeCard
+<HarnessReadiness
   headingId="is-your-harness-ready-to-leave-the-laptop"
   title="Is your harness ready to leave the laptop?"
-  steps={[
-    'Bootstrap the application in a clean environment.',
-    'Move required project guidance and checks into the repository.',
-    'Name the authoritative source for team and product context.',
-    'Separate repository configuration from protected runtime concerns.',
-    'Define identity, permissions, approval, and audit boundaries.',
-    'Run one bounded task and inspect the returned artifact.',
-    'Promote the reusable lesson back into the shared harness.',
+  groups={[
+    {
+      label: 'Reproducible',
+      items: [
+        'Bootstrap the application in a clean environment.',
+        'Move required project guidance and checks into the repository.',
+      ],
+    },
+    {
+      label: 'Contextual',
+      items: [
+        'Name the authoritative source for team and product context.',
+        'Separate repository configuration from protected runtime concerns.',
+      ],
+    },
+    {
+      label: 'Governed',
+      items: ['Define identity, permissions, approval, and audit boundaries.'],
+    },
+    {
+      label: 'Proven',
+      items: [
+        'Run one bounded task and inspect the returned artifact.',
+        'Promote the reusable lesson back into the shared harness.',
+      ],
+    },
   ]}
 />
 

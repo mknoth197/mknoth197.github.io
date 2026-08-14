@@ -1,6 +1,6 @@
 ---
 title: "PR to Production – Developer Experience"
-summary: "On the developer-experience team that owns the path from pull request to production, I built the tooling, governance, and automation that let the enterprise ship fast with security and separation-of-duties built in. The work spanned an event-driven compliance platform monitoring 50,000+ repositories, enterprise incident response, and AI-assisted diagnostics that cut production investigation from hours to minutes."
+summary: "On the Developer Experience product within John Deere’s enterprise platform organization, serving engineering teams company-wide, I built the tooling, governance, and automation behind the path from pull request to production. The work spanned an event-driven compliance platform monitoring 50,000+ repositories, enterprise incident response, and AI-assisted diagnostics that cut production investigation from hours to minutes."
 period: "2025 – 2026"
 stack: ["aws", "github-actions", "event-driven", "python", "typescript", "splunk"]
 metric:
@@ -8,12 +8,12 @@ metric:
   label: "Monitored for SoD"
 featured: true
 order: 1
-era: ai
+era: platform
 ---
 
 ## Scope
 
-This work sits in the gap between source control and production, the part of the pipeline where teams want to move fast but the organization still needs hard guarantees around security, separation of duties, and operational visibility. The team owns the tooling, governance, and automation that make "fast" and "compliant" the same path.
+Developer Experience was a product within the broader enterprise platform organization, serving engineering teams across John Deere. This work sits in the gap between source control and production, the part of the pipeline where teams want to move fast but the organization still needs hard guarantees around security, separation of duties, and operational visibility. The team owns the tooling, governance, and automation that make "fast" and "compliant" the same path.
 
 ## What I built
 

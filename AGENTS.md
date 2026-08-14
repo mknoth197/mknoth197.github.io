@@ -43,9 +43,27 @@ component, typography, or MDX presentation change must preserve these standards:
   be smaller than body copy; mono uppercase text is metadata, not a substitute for hierarchy.
 - Do not render long prose lists as browser-default indentation or unmarked stacked paragraphs.
   Use the shared editorial list treatment or a purpose-built diagram, matrix, sequence, or field card.
+- Do not manufacture hierarchy with a detached dash, dot, number, or other pseudo-element on its own
+  line above every list item. A marker must carry semantic information and stay visually attached to
+  its item; when a grid, card boundary, or grouping already establishes the items, omit the marker.
+- Do not turn a short list into a spec sheet by putting a rule above or below every row. Group related
+  items, use a compact grid, or reserve dividers for meaningful section boundaries.
+- Full-width components must earn their width. A bordered panel containing one readable-width column
+  plus a large empty remainder is not responsive; it is an under-composed component. On wide screens,
+  either constrain the component to its content measure or use the additional width for a deliberate
+  second column, media, metadata, or another useful relationship.
+- Treat whitespace as part of the composition, not as leftover viewport area. Fluid shells may grow,
+  but sparse child components still need content-aware max widths or responsive internal layouts.
 - Prevent header collisions, horizontal overflow, escaped figures, and narrow tabbed columns at every
   canonical viewport. Mobile archive and workflow content should stack with a shared left edge.
 - Keep touch targets usable and honor reduced-motion preferences.
+
+During headed review, explicitly reject these render signatures:
+
+- orphaned decorative glyphs that look like broken bullets;
+- repeated hairline rows that make prose or credentials resemble an unstyled data table;
+- a card or bordered region whose visible content occupies only one side at desktop or ultrawide sizes;
+- large internal voids created by applying `width: 100%` without redesigning the component's contents.
 
 Before publishing any source change, run `npm run quality` and `git diff --check`. GitHub Pages runs
 the same Playwright visual contract before deployment, so a visual regression must fail the build.

@@ -71,9 +71,34 @@ for (const route of routes) {
       const treatment = await list.locator(':scope > li').first().evaluate((item) => ({
         display: getComputedStyle(item).display,
         marker: getComputedStyle(item, '::before').content,
+        markerDisplay: getComputedStyle(item, '::before').display,
+        markerPosition: getComputedStyle(item, '::before').position,
       }));
       expect(treatment.display, 'prose list rows must use the editorial layout').toBe('block');
-      expect(treatment.marker, 'prose lists must retain a visible marker or number').not.toBe('none');
+      expect(
+        treatment.marker === 'none' || treatment.markerPosition === 'absolute',
+        'list markers must be omitted or visually attached to their item',
+      ).toBe(true);
+      expect(
+        treatment.markerDisplay === 'block' && treatment.markerPosition !== 'absolute',
+        'list markers must not render as detached glyphs above each item',
+      ).toBe(false);
+    }
+
+    if (geometry.viewport >= 1200 && route === '/writing/') {
+      const featureComposition = await page.locator('.featured-post').evaluate((card) => {
+        const cardBox = card.getBoundingClientRect();
+        const childBoxes = [...card.children]
+          .map((child) => child.getBoundingClientRect())
+          .filter((box) => box.width > 0 && box.height > 0);
+        const occupiedLeft = Math.min(...childBoxes.map((box) => box.left));
+        const occupiedRight = Math.max(...childBoxes.map((box) => box.right));
+        return (occupiedRight - occupiedLeft) / cardBox.width;
+      });
+      expect(
+        featureComposition,
+        'full-width feature panels must compose content across the available width',
+      ).toBeGreaterThanOrEqual(0.75);
     }
 
     if (geometry.viewport < 640 && route === '/writing/') {

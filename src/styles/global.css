@@ -240,11 +240,14 @@ button:focus-visible,
 .content ul, .content ol { padding-left: 1.4em; margin: 0 0 1.2em; }
 .content li { margin: 0.25em 0; }
 
-/* Direct prose lists are editorial objects, not indented browser defaults.
-   Component-owned lists keep their own local visual language. */
+/* Direct prose lists are compact editorial groups, not browser-default
+   indentation or row-by-row spec sheets. Component-owned lists keep their
+   own local visual language. */
 .content > ul,
 .content > ol {
-  border-block: 1px solid var(--editorial-border);
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
   list-style: none;
   margin: 1.6rem 0 2rem;
   padding: 0;
@@ -252,43 +255,39 @@ button:focus-visible,
 
 .content > ol {
   counter-reset: prose-list;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .content > ul > li,
 .content > ol > li {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
   display: block;
   line-height: 1.55;
   margin: 0;
-  padding: 0.75rem 0;
-}
-
-.content > ul > li + li,
-.content > ol > li + li {
-  border-top: 1px solid var(--border);
+  padding: 0.9rem 1rem;
 }
 
 .content > ul > li::before {
-  color: var(--accent);
-  content: "—";
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  line-height: 1;
-  margin-bottom: 0.4rem;
+  content: none;
 }
 
 .content > ol > li {
   counter-increment: prose-list;
+  padding-left: 3.2rem;
+  position: relative;
 }
 
 .content > ol > li::before {
   color: var(--accent);
   content: counter(prose-list, decimal-leading-zero);
-  display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
+  left: 1rem;
   line-height: 1;
-  margin-bottom: 0.4rem;
+  position: absolute;
+  top: 1.15rem;
 }
 .content blockquote {
   border-left: 2px solid var(--accent);

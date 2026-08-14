@@ -54,6 +54,15 @@ component, typography, or MDX presentation change must preserve these standards:
   second column, media, metadata, or another useful relationship.
 - Treat whitespace as part of the composition, not as leftover viewport area. Fluid shells may grow,
   but sparse child components still need content-aware max widths or responsive internal layouts.
+- Use section-specific imagery to reset attention in long-form essays. A published essay should have
+  at least two meaningful visuals when its length creates sustained text density; longer essays may
+  use a third visual when it marks a distinct turn in the argument.
+- Every editorial image must explain a relationship, boundary, sequence, or operating model already
+  present in the prose. Do not add generic technology decoration, fake interface screenshots, or an
+  image whose meaning depends on text rendered inside the bitmap.
+- Place each visual adjacent to the claim it clarifies, give it descriptive alt text, declare intrinsic
+  dimensions to prevent layout shift, eagerly load only the first article image, and lazy-load later
+  images. Keep a coherent visual language within an essay series instead of mixing unrelated styles.
 - Section labels must describe the content's present relationship to the page. Reserve “Archive” for
   an intentionally historical or inactive corpus; use “More writing” for current posts listed beneath
   a featured essay.

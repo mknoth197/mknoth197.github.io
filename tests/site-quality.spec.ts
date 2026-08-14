@@ -108,6 +108,30 @@ for (const route of routes) {
       ).toHaveText('More writing');
     }
 
+    if (route.startsWith('/writing/') && route !== '/writing/') {
+      const articleImages = page.locator('.article-figure img');
+      expect(
+        await articleImages.count(),
+        'long-form essays must use at least two meaningful visual resets',
+      ).toBeGreaterThanOrEqual(2);
+
+      for (let index = 0; index < (await articleImages.count()); index += 1) {
+        const image = articleImages.nth(index);
+        const semantics = await image.evaluate((element) => ({
+          alt: element.getAttribute('alt')?.trim() ?? '',
+          width: element.getAttribute('width'),
+          height: element.getAttribute('height'),
+          loading: element.getAttribute('loading'),
+        }));
+        expect(semantics.alt, 'editorial visuals need descriptive alternative text').not.toBe('');
+        expect(semantics.width, 'editorial visuals must reserve intrinsic width').toBeTruthy();
+        expect(semantics.height, 'editorial visuals must reserve intrinsic height').toBeTruthy();
+        if (index > 0) {
+          expect(semantics.loading, 'later article visuals should not compete for initial load').toBe('lazy');
+        }
+      }
+    }
+
     if (geometry.viewport < 640 && route === '/writing/') {
       const rows = page.locator('.post-row');
       for (let index = 0; index < (await rows.count()); index += 1) {

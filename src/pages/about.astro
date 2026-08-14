@@ -32,7 +32,7 @@ const eyebrow =
 
 <Base
   title="About"
-  description="Cloud software engineer at John Deere making AI a first-class participant in the software development lifecycle, built on six years of platform and developer-experience work."
+  description="Cloud software engineer at John Deere making AI a first-class participant in the software development lifecycle, built on experience across API platforms, digital equipment licensing, cloud infrastructure, and developer experience."
 >
   <CurrentlyPill text={site.currently} />
 
@@ -91,22 +91,54 @@ const eyebrow =
       falsifiable: replacing how it <em>felt</em> with evidence you could be proven wrong about.
     </p>
 
-    <p style={eyebrow}>2019 – 2025</p>
-    <h2 style="margin-top: 0;">Platform &amp; Cloud Foundations</h2>
+    <p style={eyebrow}>2019 – 2026</p>
+    <h2 style="margin-top: 0;">From APIs to Enterprise Platforms</h2>
 
+    <h3>2019 – 2021 · John Deere Financial</h3>
     <p>
-      You don’t get to redesign the SDLC until you’ve lived in its hardest corners. Before the AI
-      work, I spent most of six years on <a href="/work/">platform and developer-experience work</a>
-      at enterprise scale: PR-to-production governance that monitored 50,000+ repositories for
-      separation-of-duties compliance and cut audit-prep time by roughly three-quarters; a network
-      consolidation across about 2,000 VPCs that took seven figures a year out of cloud spend; a DNS
-      migration that remediated 140,000+ security vulnerabilities at 100% uptime through the cutover.
+      I started at John Deere Financial during an early attempt to make APIs safely available to
+      dealer software. The ambition resembled what a product such as Azure API Management provides:
+      a common gateway for governing and exposing APIs instead of another one-off integration. I
+      helped architect the platform’s <a href="/work/global-gateway/">first external-facing API</a>
+      for dealer access to sales-lead data, with role-based authorization and audit logging designed
+      in from the beginning. That early platform later matured into the JDF API Gateway used for
+      both internal and external APIs.
+    </p>
+
+    <h3>2021 – 2023 · ISG Digital</h3>
+    <p>
+      I then moved closer to the technology on John Deere machinery within the Intelligent Solutions
+      Group’s digital organization. On <a href="/work/license-management/">License Management</a>,
+      I worked behind the customer experience for purchasing digital capabilities on equipment—for
+      example, enabling a combine to use See &amp; Spray. A secure data-ingestion prototype I built
+      during a hackathon showed that license data could be made useful to internal teams without
+      giving up isolation or access controls, and helped make the case for a dedicated enterprise
+      Data Engineering team.
+    </p>
+
+    <h3>2023 – 2025 · Enterprise Cloud Foundations</h3>
+    <p>
+      The next chapter moved from individual products to infrastructure used across the enterprise.
+      I led a network consolidation across about 2,000 VPCs that removed seven figures of annual
+      cloud spend, orchestrated a DNS migration that remediated 140,000+ security vulnerabilities at
+      100% uptime through the cutover, automated certificate renewal, and turned account and VPC
+      deletion from a manual, hour-long procedure into an event-driven workflow measured in seconds.
+    </p>
+
+    <h3>2025 – 2026 · Developer Experience</h3>
+    <p>
+      On the team responsible for the path from pull request to production, I worked on governance,
+      automation, and incident response across more than 50,000 repositories. That included an
+      event-driven separation-of-duties platform that cut audit preparation by roughly
+      three-quarters, shared delivery workflows, and diagnostics that reduced production
+      investigation from hours to minutes.
     </p>
 
     <p>
-      Different decade of tooling, same instinct that runs through the AI work: make the hard,
-      important thing also the easy, default thing. Compliance you don’t have to remember. Renewals
-      that don’t need a human in the loop. Onboarding that goes from hours to minutes.
+      The throughline across those chapters is the same instinct that now shapes my AI work: make the
+      hard, important thing also the easy, default thing. Secure access that does not need to be
+      reinvented. Compliance that does not depend on an engineer remembering it. Renewals that do
+      not need a human in the loop. Onboarding that goes from hours to minutes.
     </p>
 
     <blockquote>

@@ -1,6 +1,6 @@
 ---
 title: "License Management – Data Platform"
-summary: "On the License Management team, behind a high-volume customer-facing web application accounting for roughly 10% of John Deere’s annual revenue, I built a secure data-ingestion pipeline during a hackathon that proved the case for making license data available to internal teams while preserving isolation and access controls. The prototype directly contributed to forming the enterprise Data Engineering team."
+summary: "Within ISG Digital, I worked behind the customer experience for purchasing digital capabilities on John Deere equipment, such as enabling See & Spray on a combine. During a hackathon, I built a secure data-ingestion pipeline that proved license data could serve internal teams while preserving isolation and access controls, helping make the case for an enterprise Data Engineering team."
 period: "2021 – 2023"
 stack: ["java", "aws", "data-pipeline", "oauth"]
 metric:
@@ -13,7 +13,9 @@ era: platform
 
 ## Scope
 
-This chapter was about safely opening data up *inside* the company: making license data useful to internal teams without losing isolation or access-control guarantees, behind an application that carried a meaningful share of company revenue.
+This chapter sat within the Intelligent Solutions Group’s digital organization, close to the technology on John Deere machinery. The License Management product supported the purchase of digital capabilities on equipment—for example, enabling a combine to use See & Spray—and its customer-facing application carried a meaningful share of company revenue.
+
+My work was about safely opening the underlying license data up *inside* the company: making it useful to internal teams without losing isolation or access-control guarantees.
 
 ## What I built
 

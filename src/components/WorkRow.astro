@@ -41,7 +41,7 @@ const accent = p.data.metric?.value ?? p.data.roleTag;
         </div>
       )
     }
-    <p class="mb-3 text-[15px] leading-[1.65]" style="color: var(--fg-muted);">{p.data.summary}</p>
+    <p class="mb-3 max-w-[80ch] text-[15px] leading-[1.65]" style="color: var(--fg-muted);">{p.data.summary}</p>
     {
       p.data.stack.length > 0 && (
         <div class="flex flex-wrap gap-2">

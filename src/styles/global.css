@@ -35,6 +35,8 @@
    ------------------------------------------------------------- */
 :root {
   color-scheme: dark;
+  --site-gutter: clamp(1rem, 4vw, 4rem);
+  --site-max-width: 90rem;
   --bg: var(--color-bg);
   --bg-elevated: var(--color-bg-elevated);
   --border: var(--color-border);
@@ -75,6 +77,12 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
+}
+
+.site-shell {
+  max-width: var(--site-max-width);
+  padding-inline: var(--site-gutter);
+  width: 100%;
 }
 
 .no-transitions * { transition: none !important; }
@@ -172,7 +180,7 @@ button:focus-visible,
    MDX / prose content styling
    ------------------------------------------------------------- */
 .content {
-  max-width: 68ch;
+  max-width: 76ch;
 }
 .content h1, .content h2, .content h3 {
   font-family: var(--font-serif);
@@ -280,9 +288,24 @@ button:focus-visible,
 
 @media (min-width: 760px) {
   .content .article-figure {
-    margin-inline: -2rem;
-    max-width: calc(100% + 4rem);
-    width: calc(100% + 4rem);
+    margin-left: 50%;
+    margin-right: 0;
+    max-width: none;
+    transform: translateX(-50%);
+    width: min(
+      calc(100% + 4rem),
+      calc(100vw - var(--site-gutter) - var(--site-gutter))
+    );
+  }
+}
+
+@media (min-width: 64rem) {
+  .content.article-layout > :is(figure, nav, aside, .harness-map, .article-figure) {
+    margin-left: 50%;
+    margin-right: 0;
+    max-width: none;
+    transform: translateX(-50%);
+    width: min(62rem, calc(100vw - var(--site-gutter) - var(--site-gutter)));
   }
 }
 

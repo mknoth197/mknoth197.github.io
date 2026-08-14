@@ -9,7 +9,12 @@ npm install
 npm run dev        # http://localhost:4321
 npm run build      # production build → ./dist
 npm run preview    # preview the built site
+npm run quality    # type/build checks + responsive Playwright contract
 ```
+
+For visual critique, run `npm run test:visual:headed`. The suite opens Chromium and exercises every
+public route at phone, tablet, desktop, and ultrawide viewports. Failed checks retain a screenshot and
+trace in `test-results/`; CI runs the same contract before GitHub Pages can deploy.
 
 ## Deploying to GitHub Pages
 

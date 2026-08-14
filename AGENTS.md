@@ -27,3 +27,25 @@
 - Never repeat a private identifier merely to explain that it was removed.
 - Return only the artifact and reporting the user requested. Do not expose persona names, lens selection, blend percentages, evidence-spine bookkeeping, privacy checklists, or validation narration in article prose or outlines unless explicitly requested.
 - When source files change, run `npm run check`, `npm run build`, and `git diff --check`, then report those results outside the article artifact.
+
+## Visual Quality Harness
+
+Treat the site as an editorial system, not a collection of independently styled pages. Any layout,
+component, typography, or MDX presentation change must preserve these standards:
+
+- Audit the rendered site in a real, headed browser. Use `npm run test:visual:headed` for critique;
+  DOM measurements support the visual review but do not replace it.
+- Exercise the canonical viewport matrix: 320px phone, 768px tablet, 1440px desktop, and 3440px
+  ultrawide. Check both dark and light themes when changing color, borders, or elevation.
+- Keep the responsive shell fluid through 1440px with fluid gutters. Do not reintroduce a narrow
+  fixed-width site shell; long-form prose may keep a readable measure inside the wider shell.
+- Preserve a visible heading hierarchy. Semantic section headings must read as headings and must not
+  be smaller than body copy; mono uppercase text is metadata, not a substitute for hierarchy.
+- Do not render long prose lists as browser-default indentation or unmarked stacked paragraphs.
+  Use the shared editorial list treatment or a purpose-built diagram, matrix, sequence, or field card.
+- Prevent header collisions, horizontal overflow, escaped figures, and narrow tabbed columns at every
+  canonical viewport. Mobile archive and workflow content should stack with a shared left edge.
+- Keep touch targets usable and honor reduced-motion preferences.
+
+Before publishing any source change, run `npm run quality` and `git diff --check`. GitHub Pages runs
+the same Playwright visual contract before deployment, so a visual regression must fail the build.

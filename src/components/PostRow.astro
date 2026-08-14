@@ -18,7 +18,7 @@ const tail = readingTime ?? '—';
 
 <a
   href={href}
-  class="group grid grid-cols-[64px_minmax(0,1fr)_auto] items-baseline gap-5 border-b py-[18px] transition-colors"
+  class="post-row group border-b py-[18px] transition-colors"
   style="border-color: var(--border);"
 >
   <span
@@ -33,10 +33,38 @@ const tail = readingTime ?? '—';
   >
     {title}
   </span>
-  <span
-    class="text-[11px]"
-    style="font-family: var(--font-mono); color: var(--fg-dim);"
-  >
-    {tail}
-  </span>
+  {
+    readingTime && (
+      <span
+        class="post-row__tail text-[11px]"
+        style="font-family: var(--font-mono); color: var(--fg-dim);"
+      >
+        {tail}
+      </span>
+    )
+  }
 </a>
+
+<style>
+  .post-row {
+    align-items: baseline;
+    display: grid;
+    gap: 0.45rem;
+    grid-template-columns: 1fr;
+  }
+
+  .post-row__tail {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .post-row {
+      gap: 1.25rem;
+      grid-template-columns: 4rem minmax(0, 1fr) auto;
+    }
+
+    .post-row__tail {
+      display: inline;
+    }
+  }
+</style>

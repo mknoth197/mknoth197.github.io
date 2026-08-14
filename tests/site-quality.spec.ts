@@ -101,6 +101,13 @@ for (const route of routes) {
       ).toBeGreaterThanOrEqual(0.75);
     }
 
+    if (route === '/writing/') {
+      await expect(
+        page.locator('#writing-archive-title'),
+        'the current publication list must not be mislabeled as an archive',
+      ).toHaveText('More writing');
+    }
+
     if (geometry.viewport < 640 && route === '/writing/') {
       const rows = page.locator('.post-row');
       for (let index = 0; index < (await rows.count()); index += 1) {

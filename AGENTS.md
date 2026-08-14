@@ -54,6 +54,9 @@ component, typography, or MDX presentation change must preserve these standards:
   second column, media, metadata, or another useful relationship.
 - Treat whitespace as part of the composition, not as leftover viewport area. Fluid shells may grow,
   but sparse child components still need content-aware max widths or responsive internal layouts.
+- Section labels must describe the content's present relationship to the page. Reserve “Archive” for
+  an intentionally historical or inactive corpus; use “More writing” for current posts listed beneath
+  a featured essay.
 - Prevent header collisions, horizontal overflow, escaped figures, and narrow tabbed columns at every
   canonical viewport. Mobile archive and workflow content should stack with a shared left edge.
 - Keep touch targets usable and honor reduced-motion preferences.

@@ -1,42 +1,29 @@
 # Repository Agent Instructions
 
-## Article Writing Persona Harness
+## Article Writing Harness
 
 > [!IMPORTANT]
-> Whenever a task drafts, rewrites, reviews, edits, or publishes an article for `src/content/posts/`, load the writing-persona vault before substantive writing. Mitch Knoth is the canonical authorial voice. Martin Fowler, Gene Kim, and Jensen Huang are bounded editorial lenses, not voices to imitate.
+> For article work in `src/content/posts/`, Mitch Knoth is the canonical authorial voice. Use the published essays as the primary style reference. The writing vault is optional, task-triggered context—not a mandatory checklist.
 
-### Mandatory context
+### Context routing
 
-Read these notes in order:
+- First read the most relevant published essay in `src/content/posts/`. Read both only when the task depends on patterns from both.
+- For a substantial new draft or rewrite, also read `writing-vault/Mitch Knoth Writing Persona.md`.
+- Load at most one named editorial lens when it materially fits the task:
+  - `writing-vault/Martin Fowler Editorial Lens.md` for definitions, distinctions, examples, or evolutionary design.
+  - `writing-vault/Gene Kim Editorial Lens.md` for systems, flow, feedback, learning, or customer value.
+  - `writing-vault/Jensen Huang Editorial Lens.md` for first principles, platform framing, strategic stakes, or compression.
+- Load `writing-vault/Writing Persona Source Ledger.md` only when attributing an idea or adding an external factual claim.
+- Use `writing-vault/Essay Brief Template.md` or `writing-vault/Editorial Council.md` only when the user explicitly asks for a brief, a multi-lens review, or the full editorial workflow.
 
-1. `writing-vault/Writing Personas Index.md`
-2. `writing-vault/Mitch Knoth Writing Persona.md`
-3. `writing-vault/Essay Brief Template.md`
-4. `writing-vault/Editorial Council.md`
-5. The relevant editorial lenses:
-   - `writing-vault/Martin Fowler Editorial Lens.md` for definitions, distinctions, examples, and evolutionary design
-   - `writing-vault/Gene Kim Editorial Lens.md` for systems, flow, feedback, learning, and customer value
-   - `writing-vault/Jensen Huang Editorial Lens.md` for first principles, full-stack framing, strategic stakes, and compression
-6. `writing-vault/Writing Persona Source Ledger.md` before attributing an idea or adding an external claim
-
-### Operating rules
+### Writing rules
 
 - Draft and synthesize in Mitch's voice. Never write “as” a named public figure or reproduce distinctive phrases, cadence, anecdotes, or verbal tics.
-- Treat the three named-person lenses as separate review passes. Accept only suggestions that strengthen Mitch's thesis and rewrite accepted ideas in Mitch's vocabulary.
-- Default editing attention is Mitch 60%, Fowler 18%, Kim 14%, and Huang 8%. Mitch must remain at least 50% for every article.
-- Begin with an operational tension when the evidence supports one. Prefer one dominant practice-derived model, one inspectable example or artifact chain, explicit proof ceilings, and a field check.
+- Treat a named-person lens as private editorial scaffolding. Rewrite any useful insight in Mitch's vocabulary.
+- Begin with an operational tension when it improves the argument. Prefer one dominant model, one inspectable example, explicit evidence boundaries, and a practical next move; do not force this structure when the subject needs another shape.
 - Separate facts, observations, inferences, recommendations, authority, and completion status. Do not let a source support a stronger claim than it actually establishes.
-- Prefer primary sources. Link important factual claims to durable evidence and state how a source supports—and does not support—the synthesis.
+- Prefer primary sources for important factual claims.
 - Protect private context. Do not publish employer, customer, team, individual, internal metric, or Microsoft Teams details without explicit publication authority.
-- Do not claim Teams-derived style evidence unless the current agent can access it. If available, follow the anonymized enrichment protocol in `writing-vault/Mitch Knoth Writing Persona.md`.
-- Before calling an article complete, run the council's compression and publication check plus `npm run check`, `npm run build`, and `git diff --check` when source files changed.
-
-### Article task output
-
-For article work, report:
-
-- the intended reader and strongest defensible thesis;
-- the evidence spine and any remaining `research` items;
-- which lenses were applied and what materially changed;
-- privacy, source, and proof-ceiling checks;
-- repository validation results when files changed.
+- Never repeat a private identifier merely to explain that it was removed.
+- Return only the artifact and reporting the user requested. Do not expose persona names, lens selection, blend percentages, evidence-spine bookkeeping, privacy checklists, or validation narration in article prose or outlines unless explicitly requested.
+- When source files change, run `npm run check`, `npm run build`, and `git diff --check`, then report those results outside the article artifact.

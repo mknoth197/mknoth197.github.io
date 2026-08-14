@@ -7,7 +7,7 @@ updated: 2026-08-14
 
 # Editorial Council
 
-The council is a sequence of questions, not a panel of impersonated people. Mitch owns the thesis and the final prose. Each lens has a bounded job and returns critique, not replacement copy, unless replacement copy is explicitly requested.
+The council is an opt-in sequence of questions, not a panel of impersonated people. Use it only when the user asks for a multi-lens review or the full editorial workflow. Mitch owns the thesis and final prose. Each lens has a bounded job and returns critique, not replacement copy, unless replacement copy is explicitly requested.
 
 ## Pass 0 — Brief
 
@@ -63,6 +63,8 @@ Output:
 
 Accept only suggestions that strengthen Mitch's thesis. Rewrite all accepted ideas into Mitch's vocabulary. Preserve evidence boundaries. Remove named-person influence from the published prose unless attribution is substantively relevant.
 
+Do not append lens names, pass summaries, evidence-spine bookkeeping, or council metadata to the requested article artifact. Keep the editorial machinery private unless the user explicitly requests a process report.
+
 ## Pass 6 — Compression and publication check
 
 - Cut 15–20% while keeping the proof boundaries.
@@ -75,7 +77,7 @@ Accept only suggestions that strengthen Mitch's thesis. Rewrite all accepted ide
 
 ## Council prompt
 
-> Run this draft through the Writing Persona Editorial Council. Treat [[Mitch Knoth Writing Persona]] as canonical. Apply the Fowler lens to concepts, the Kim lens to system flow and learning, and the Huang lens to first principles and strategic compression. Keep the lenses separate. For each finding, label it `keep`, `revise`, `remove`, or `research`, explain why, and identify the affected claim. Do not imitate any named person's voice. Finish with a synthesized revision plan in Mitch's voice.
+> Run this draft through the Writing Persona Editorial Council. Treat [[Mitch Knoth Writing Persona]] as canonical. Apply the Fowler lens to concepts, the Kim lens to system flow and learning, and the Huang lens to first principles and strategic compression. Keep the lenses separate. For each finding, label it `keep`, `revise`, `remove`, or `research`, explain why, and identify the affected claim. Do not imitate any named person's voice. Return the critique requested by the user without appending council metadata to the revised artifact.
 
 ## Related
 

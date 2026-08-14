@@ -8,6 +8,7 @@ tags: ["ai", "agents", "engineering", "cloud"]
 ---
 
 import ArticleToc from '../../components/writing/ArticleToc.astro';
+import ArtifactFlow from '../../components/writing/ArtifactFlow.astro';
 import PracticeCard from '../../components/writing/PracticeCard.astro';
 import RelatedWork from '../../components/writing/RelatedWork.astro';
 
@@ -19,21 +20,22 @@ Instead, I recorded a voice note from my phone and handed it to a cloud agent. T
 
 The voice note did not become production code by magic. It became the first durable link in an inspectable delivery chain:
 
-```text
-breakthrough away from the laptop
-        ↓
-rough voice note
-        ↓
-remote feasibility research
-        ↓
-repository-owned GitHub issue
-        ↓
-human refinement and judgment
-        ↓
-epic specification
-        ↓
-implementation
-```
+<ArtifactFlow
+  phases={[
+    {
+      label: 'Capture',
+      steps: ['breakthrough away from the laptop', 'rough voice note'],
+    },
+    {
+      label: 'Delegate',
+      steps: ['remote feasibility research', 'repository-owned GitHub issue'],
+    },
+    {
+      label: 'Decide + deliver',
+      steps: ['human refinement and judgment', 'epic specification', 'implementation'],
+    },
+  ]}
+/>
 
 This is a personal field note, not a controlled productivity study. The underlying issue is private, and the experience does not prove that every idea or every engineer will benefit in the same way. It does demonstrate a changed constraint: useful agentic work no longer had to wait for my workstation.
 

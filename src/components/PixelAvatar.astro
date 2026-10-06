@@ -7,19 +7,28 @@
   .pixel-avatar__portrait {
     width: 112px;
     height: 112px;
-    background: url('/images/mitch-emotes-casual.png') 0 0 / 400% 200% no-repeat;
+    background: url('/images/mitch-emotes-developer.png') 0 0 / 600% 300% no-repeat;
     image-rendering: pixelated;
-    animation: avatar-emotes 12s steps(1, end) infinite;
+    background-position: calc(var(--state-x, 0%) + var(--frame-offset, 0%)) var(--state-y, 0%);
+    animation: avatar-states 18s steps(1, end) infinite, avatar-frames 0.7s steps(1, end) infinite;
   }
-  @keyframes avatar-emotes {
-    0%, 12.5%, 100% { background-position: 0% 0%; }
-    6.25%, 18.75% { background-position: 33.333333% 0%; }
-    25%, 37.5% { background-position: 66.666667% 0%; }
-    31.25%, 43.75% { background-position: 100% 0%; }
-    50%, 62.5% { background-position: 0% 100%; }
-    56.25%, 68.75% { background-position: 33.333333% 100%; }
-    75%, 87.5% { background-position: 66.666667% 100%; }
-    81.25%, 93.75% { background-position: 100% 100%; }
+  /* Six columns by three rows: each state occupies two neighboring frames.
+     Row 1: idle, run right, run left. Row 2: wave, jump, failed.
+     Row 3: waiting, running in place, review. */
+  @keyframes avatar-states {
+    0%, 100% { --state-x: 0%; --state-y: 0%; }
+    11.111111% { --state-x: 40%; --state-y: 0%; }
+    22.222222% { --state-x: 80%; --state-y: 0%; }
+    33.333333% { --state-x: 0%; --state-y: 50%; }
+    44.444444% { --state-x: 40%; --state-y: 50%; }
+    55.555556% { --state-x: 80%; --state-y: 50%; }
+    66.666667% { --state-x: 0%; --state-y: 100%; }
+    77.777778% { --state-x: 40%; --state-y: 100%; }
+    88.888889% { --state-x: 80%; --state-y: 100%; }
+  }
+  @keyframes avatar-frames {
+    0%, 100% { --frame-offset: 0%; }
+    50% { --frame-offset: 20%; }
   }
   @media (min-width: 768px) {
     .pixel-avatar, .pixel-avatar__portrait { width: 144px; }

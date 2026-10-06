@@ -166,12 +166,12 @@ test('hero avatar loops without controls and honors reduced motion', async ({ pa
   await page.goto('/');
   const portrait = page.locator('.pixel-avatar__portrait');
   await expect(portrait).toBeVisible();
-  const asset = await page.request.get('/images/mitch-emotes-casual.png');
+  const asset = await page.request.get('/images/mitch-emotes-developer.png');
   expect(asset.ok()).toBe(true);
   expect(asset.headers()['content-type']).toContain('image/png');
   await expect(page.locator('.pixel-avatar button')).toHaveCount(0);
-  expect(await portrait.evaluate((node) => getComputedStyle(node).animationIterationCount)).toBe('infinite');
-  expect(await portrait.evaluate((node) => getComputedStyle(node).animationPlayState)).toBe('running');
+  expect(await portrait.evaluate((node) => getComputedStyle(node).animationIterationCount)).toBe('infinite, infinite');
+  expect(await portrait.evaluate((node) => getComputedStyle(node).animationPlayState)).toBe('running, running');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   expect(await portrait.evaluate((node) => getComputedStyle(node).animationName)).toBe('none');
 });

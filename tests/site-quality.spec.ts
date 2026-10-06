@@ -162,18 +162,16 @@ test('both themes preserve readable foreground and background tokens', async ({ 
   }
 });
 
-test('hero avatar can pause and honors reduced motion', async ({ page }) => {
+test('hero avatar loops without controls and honors reduced motion', async ({ page }) => {
   await page.goto('/');
   const portrait = page.locator('.pixel-avatar__portrait');
   await expect(portrait).toBeVisible();
-  const asset = await page.request.get('/images/mitch-emotes.png');
+  const asset = await page.request.get('/images/mitch-emotes-casual.png');
   expect(asset.ok()).toBe(true);
   expect(asset.headers()['content-type']).toContain('image/png');
-  await page.getByRole('button', { name: 'Pause avatar animation' }).click();
-  expect(await portrait.evaluate((node) => getComputedStyle(node).animationPlayState)).toBe('paused');
-  await page.getByRole('button', { name: 'Play avatar animation' }).click();
+  await expect(page.locator('.pixel-avatar button')).toHaveCount(0);
+  expect(await portrait.evaluate((node) => getComputedStyle(node).animationIterationCount)).toBe('infinite');
   expect(await portrait.evaluate((node) => getComputedStyle(node).animationPlayState)).toBe('running');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   expect(await portrait.evaluate((node) => getComputedStyle(node).animationName)).toBe('none');
-  await expect(page.getByRole('button', { name: 'Pause avatar animation' })).toBeHidden();
 });

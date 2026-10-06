@@ -1,48 +1,25 @@
-<div class="pixel-avatar">
-  <div class="pixel-avatar__portrait" aria-hidden="true"></div>
-  <button type="button" class="pixel-avatar__toggle" aria-label="Pause avatar animation" aria-pressed="false" hidden>Pause</button>
+<div class="pixel-avatar" aria-hidden="true">
+  <div class="pixel-avatar__portrait"></div>
 </div>
 
-<script>
-  document.querySelectorAll<HTMLElement>('.pixel-avatar').forEach((avatar) => {
-    const button = avatar.querySelector<HTMLButtonElement>('button');
-    if (!button) return;
-    button.hidden = false;
-    button.addEventListener('click', () => {
-      const paused = avatar.classList.toggle('is-paused');
-      button.setAttribute('aria-pressed', String(paused));
-      button.setAttribute('aria-label', `${paused ? 'Play' : 'Pause'} avatar animation`);
-      button.textContent = paused ? 'Play' : 'Pause';
-    });
-  });
-</script>
-
 <style>
-  .pixel-avatar { justify-self: end; width: 112px; text-align: center; }
+  .pixel-avatar { justify-self: end; width: 112px; }
   .pixel-avatar__portrait {
     width: 112px;
     height: 112px;
-    background: url('/images/mitch-emotes.png') 0 0 / 200% 200% no-repeat;
+    background: url('/images/mitch-emotes-casual.png') 0 0 / 400% 200% no-repeat;
     image-rendering: pixelated;
-    animation: avatar-emotes 16s steps(1, end) infinite;
+    animation: avatar-emotes 12s steps(1, end) infinite;
   }
-  .is-paused .pixel-avatar__portrait { animation-play-state: paused; }
-  .pixel-avatar__toggle {
-    min-width: 48px;
-    min-height: 44px;
-    color: var(--fg-muted);
-    font-family: var(--font-mono);
-    font-size: 11px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  .pixel-avatar__toggle:hover { color: var(--accent); }
-  .pixel-avatar__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   @keyframes avatar-emotes {
-    0%, 100% { background-position: 0% 0%; }
-    25% { background-position: 100% 0%; }
-    50% { background-position: 0% 100%; }
-    75% { background-position: 100% 100%; }
+    0%, 12.5%, 100% { background-position: 0% 0%; }
+    6.25%, 18.75% { background-position: 33.333333% 0%; }
+    25%, 37.5% { background-position: 66.666667% 0%; }
+    31.25%, 43.75% { background-position: 100% 0%; }
+    50%, 62.5% { background-position: 0% 100%; }
+    56.25%, 68.75% { background-position: 33.333333% 100%; }
+    75%, 87.5% { background-position: 66.666667% 100%; }
+    81.25%, 93.75% { background-position: 100% 100%; }
   }
   @media (min-width: 768px) {
     .pixel-avatar, .pixel-avatar__portrait { width: 144px; }
@@ -50,6 +27,5 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .pixel-avatar__portrait { animation: none; }
-    .pixel-avatar__toggle { display: none; }
   }
 </style>

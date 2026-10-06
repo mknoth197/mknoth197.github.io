@@ -12,15 +12,15 @@ const certs = [
 ];
 
 // "At a glance" - front-loaded facts for a five-second skim. Rendered with the
-// existing .skills-grid idiom (mono label column + value column, hairline rows).
+// existing .skills-grid idiom.
 const glance = [
-  { k: 'Role', v: 'Cloud Software Engineer, John Deere · 6+ yrs' },
+  { k: 'Role', v: 'Cloud Software Engineer, John Deere · since 2019' },
   { k: 'Based', v: 'Des Moines, Iowa' },
-  { k: 'Focus', v: 'Agentic AI in the SDLC: harness, context, measurement' },
-  { k: 'Currently', v: 'One of three on a tiger team defining how AI reshapes the way we ship software' },
+  { k: 'Focus', v: 'AI-era SDLC: harness, context, evidence, governed execution' },
+  { k: 'Currently', v: 'Evidence product in production, shared team brain, cloud agent evaluations' },
   {
     k: 'Credentials',
-    v: '5× AWS certified, Foundational → Professional · B.S. Software Engineering, Iowa State (Cum Laude)',
+    v: 'AWS certifications, Foundational → Professional · B.S. Software Engineering, Iowa State (Cum Laude)',
   },
 ];
 
@@ -63,35 +63,62 @@ const eyebrow =
   </div>
 
   <section class="content">
-    <p style={eyebrow}>2026 – present</p>
+    <p style={eyebrow}>Recent work · October 2025 – October 2026</p>
     <h2 style="margin-top: 0;">The AI-Era SDLC</h2>
 
     <p>
-      My current chapter is a three-person tiger team, chartered by senior leadership, with a
-      deceptively large question: how does agentic AI reshape the software development lifecycle, and
-      what do we build so the answer becomes practice instead of a slide? In practice that’s a
-      harness, a context substrate, and the workflows that connect them, now serving a cohort of
-      around 45 engineers and feeding the enterprise AI strategy.
+      I’m one of three engineers on a tiger team chartered by senior leadership to define how
+      agentic AI changes the software development lifecycle. My focus is building and governing
+      the system around the model: shared context, evidence, review, and secure execution boundaries.
+      I co-facilitate an agentic engineering guild and office hours for a cohort of around 38 engineers.
     </p>
 
+    <h3>What’s shipped</h3>
     <p>
-      Two convictions drive most of it. The first is that an agent is a model <em>plus a harness</em>
-      (the guides, hooks, skills, tests, reviews, and judges around the model), and the harness is
-      where the real engineering lives. Hooks always execute; instructions only get interpreted, so
-      anything that has to hold gets enforced deterministically rather than left to a model’s
-      discretion. The second is that context, not the model, is the load-bearing layer of agentic
-      delivery. Karpathy’s writing on LLM wikis matched what I keep seeing in practice: AI output
-      improves dramatically the moment an agent can reach the “pet knowledge” a team usually keeps in
-      human heads.
+      I helped take an <a href="/work/agentic-engineering/">engineering evidence product</a> from
+      requirements to production, where it now sees steady, growing use. I wrote the requirements
+      and a substantial share of the backlog, moved key views onto live data, added a personal work
+      view, and shipped caching that makes those views faster while respecting data freshness.
     </p>
-
     <p>
-      And the throughline underneath all of it is a refusal to run on vibes. “AI made me 3x faster”
-      is an anecdote, not a measurement. The interesting work is turning that into something
-      falsifiable: replacing how it <em>felt</em> with evidence you could be proven wrong about.
+      I designed and stood up the <a href="/work/team-brain/">shared team brain</a>: an
+      agent-maintained knowledge repository with hybrid retrieval, a structural knowledge graph,
+      and a memory lifecycle. I also wrote the team’s harness thesis and Agent Delegation Stack,
+      giving engineers and leadership a vocabulary for deciding what is ready to delegate.
+    </p>
+    <p>
+      I ran <a href="/work/secure-agent-execution/">Codex and Claude Code in cloud sandboxes</a>
+      and returned inspectable patches, then implemented a separate keyless Codex pilot.
+      Live verification and containment hardening for that pilot remain in progress. Alongside
+      this work, I built a <a href="/work/agent-trust/">versioned trust layer</a> for skill scans
+      and packaged review skills and feedback hooks that other repositories can reuse.
     </p>
 
-    <p style={eyebrow}>2019 – 2026</p>
+    <h3>Before the tiger team · Developer Experience</h3>
+    <p>
+      Before joining the tiger team, I worked on the Developer Experience product
+      responsible for the path from pull request to production. In late 2025 and early 2026,
+      I hardened the separation-of-duties platform with Datadog observability and automatic
+      incidents, consolidated a legacy processor, worked through security findings, and introduced
+      agent tooling into the team’s repositories. <a href="/work/pr-to-production/">More on that work →</a>
+    </p>
+
+    <h3>The model and the harness</h3>
+    <p>
+      My working model is <strong>Agent = Model + Harness</strong>. The harness is the guides,
+      controls, sensors, and feedback that make model capability usable in real engineering work.
+      Instructions guide behavior; deterministic checks, repository policy, CI, and target-system
+      permissions enforce the boundaries that have to hold. Shared context gives the agent access
+      to what the team already knows, and feedback turns a repeated miss into a durable correction.
+    </p>
+    <p>
+      The evidence product is in production. The claim that AI causes better engineering outcomes
+      is still a question to test. Observational signals can show relationships; they cannot establish
+      causal productivity gains. That distinction is how I turn vibes into evidence without
+      pretending the evidence says more than it does.
+    </p>
+
+    <p style={eyebrow}>Earlier foundations · 2019 – 2025</p>
     <h2 style="margin-top: 0;">From APIs to Enterprise Platforms</h2>
 
     <h3>2019 – 2021 · John Deere Financial</h3>
@@ -101,16 +128,15 @@ const eyebrow =
       a common gateway for governing and exposing APIs instead of another one-off integration. I
       helped architect the platform’s <a href="/work/global-gateway/">first external-facing API</a>
       for dealer access to sales-lead data, with role-based authorization and audit logging designed
-      in from the beginning. That early platform later matured into the JDF API Gateway used for
+      in from the beginning. That early platform later matured into a gateway used for
       both internal and external APIs.
     </p>
 
-    <h3>2021 – 2023 · ISG Digital</h3>
+    <h3>2021 – 2023 · Digital Equipment Capabilities</h3>
     <p>
-      I then moved closer to the technology on John Deere machinery within the Intelligent Solutions
-      Group’s digital organization. On <a href="/work/license-management/">License Management</a>,
-      I worked behind the customer experience for purchasing digital capabilities on equipment—for
-      example, enabling a combine to use See &amp; Spray. A secure data-ingestion prototype I built
+      I then moved closer to the technology on John Deere machinery. On <a href="/work/license-management/">equipment licensing</a>,
+      I worked behind the customer experience for purchasing digital capabilities on equipment. A secure
+      data-ingestion prototype I built
       during a hackathon showed that license data could be made useful to internal teams without
       giving up isolation or access controls, and helped make the case for a dedicated enterprise
       Data Engineering team.
@@ -119,30 +145,18 @@ const eyebrow =
     <h3>2023 – 2025 · Enterprise Cloud Foundations</h3>
     <p>
       The next chapter moved from individual products to infrastructure used across the enterprise.
-      The Landing Zone team began within Infrastructure and Operations in Global IT, serving
-      engineering teams across John Deere, before moving into the broader enterprise platform
-      organization. I led a network consolidation across about 2,000 VPCs that removed seven figures
-      of annual cloud spend, orchestrated a DNS migration that remediated 140,000+ security
-      vulnerabilities at 100% uptime through the cutover, automated certificate renewal, and turned
-      account and VPC deletion from a manual, hour-long procedure into an event-driven workflow
-      measured in seconds.
-    </p>
-
-    <h3>2025 – 2026 · Developer Experience</h3>
-    <p>
-      Within that enterprise platform organization, I moved to the Developer Experience product
-      responsible for the path from pull request to production. I worked on governance, automation,
-      and incident response across more than 50,000 repositories, including an event-driven
-      separation-of-duties platform that cut audit preparation by roughly three-quarters, shared
-      delivery workflows, and diagnostics that reduced production investigation from hours to
-      minutes.
+      I worked on cloud foundations serving engineering teams across John Deere. I led network
+      consolidation, orchestrated a DNS migration, automated
+      certificate renewal, and replaced manual account and VPC deletion with an event-driven
+      workflow. The work reduced operational drag and made recurring infrastructure tasks easier
+      to perform consistently.
     </p>
 
     <p>
       The throughline across those chapters is the same instinct that now shapes my AI work: make the
       hard, important thing also the easy, default thing. Secure access that does not need to be
       reinvented. Compliance that does not depend on an engineer remembering it. Renewals that do
-      not need a human in the loop. Onboarding that goes from hours to minutes.
+      not need a human in the loop. Onboarding through reproducible environments.
     </p>
 
     <blockquote>

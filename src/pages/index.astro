@@ -9,15 +9,6 @@ import { getProjects, getPublishedPosts, splitFeaturedPost } from '../lib/conten
 
 const { featured } = splitFeaturedPost(await getPublishedPosts());
 
-// Home-only tightened metric-card labels: outcome-first so each card parses in
-// ~2s. Keyed by project id; falls back to the project's own metric.label.
-const cardLabel: Record<string, string> = {
-  'agentic-engineering': 'Replacing AI-productivity anecdotes with measurement',
-  'pr-to-production': 'Separation-of-duties compliance, audit prep down ~75%',
-  'onecloud-network': 'Annual cloud spend, ~2,000 VPCs consolidated',
-  'vpc-deletion-automation': 'Account + VPC teardown, automated end to end',
-};
-
 const featuredMetrics = (await getProjects())
   .filter((project) => project.data.featured && project.data.metric)
   .slice(0, 4);
@@ -35,9 +26,9 @@ const featuredMetrics = (await getProjects())
     </h1>
 
     <p class="max-w-[60ch] text-[16.5px] leading-[1.7] text-pretty" style="color: var(--fg-muted);">
-      Most claims about AI and engineering run on vibes. I’d rather show the work: six years of
-      turning “this should be faster” into measured outcomes, now spent making
-      agent output safe enough to ship. <a href="/about/" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">More about how I got here →</a>
+      Most claims about AI and engineering run on vibes. I’d rather show the work: an evidence
+      product in production, shared context that travels across agent tools, and cloud execution
+      experiments with explicit trust boundaries. <a href="/about/" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">More about how I got here →</a>
     </p>
   </section>
 
@@ -46,7 +37,7 @@ const featuredMetrics = (await getProjects())
     class="mb-5 -mt-3 text-[15px] italic"
     style="color: var(--fg-muted); font-family: var(--font-serif);"
   >
-    The claim, and the receipts.
+    Recent delivery, with the boundaries made explicit.
   </p>
   <div
     class="grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border sm:grid-cols-2 xl:grid-cols-4"
@@ -56,7 +47,7 @@ const featuredMetrics = (await getProjects())
       featuredMetrics.map((project) => (
         <MetricCard
           value={project.data.metric!.value}
-          label={cardLabel[project.id] ?? project.data.metric!.label}
+          label={project.data.metric!.label}
         />
       ))
     }

@@ -23,7 +23,8 @@ const featuredMetrics = (await getProjects())
     </h1>
 
     <div class="hero-detail">
-      <div>
+      <div class="hero-copy">
+        <div class="hero-avatar-slot"><PixelAvatar /></div>
         <p class="max-w-[60ch] text-[16.5px] leading-[1.7] text-pretty" style="color: var(--fg-muted);">
           I’m Mitch, a Cloud Software Engineer at John Deere. I build production systems for
           AI-assisted software delivery, with a foundation in cloud infrastructure, security, and
@@ -35,7 +36,6 @@ const featuredMetrics = (await getProjects())
           <a href="/about/" class="underline underline-offset-4">About my work →</a>
         </p>
       </div>
-      <PixelAvatar />
     </div>
   </section>
 
@@ -92,8 +92,24 @@ const featuredMetrics = (await getProjects())
   }
 </Base>
 <style>
-  .hero-detail { display: grid; gap: 1.5rem; align-items: end; }
+  .hero-copy { display: flow-root; font-size: 16.5px; }
+  .hero-avatar-slot { float: right; margin: 0 0 0.5rem 0.75rem; --avatar-size: 88px; }
+  .hero-copy > p:last-child { clear: both; }
   @media (min-width: 640px) {
-    .hero-detail { grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; }
+    .hero-copy {
+      display: grid;
+      grid-template-columns: minmax(0, 60ch) 144px;
+      column-gap: 2rem;
+      max-width: calc(60ch + 176px);
+    }
+    .hero-copy > p { grid-column: 1; }
+    .hero-avatar-slot {
+      float: none;
+      grid-column: 2;
+      grid-row: 1 / 3;
+      align-self: end;
+      margin: 0;
+      --avatar-size: 144px;
+    }
   }
 </style>

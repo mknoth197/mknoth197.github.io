@@ -3,10 +3,10 @@
 </div>
 
 <style>
-  .pixel-avatar { justify-self: end; width: 112px; }
+  .pixel-avatar { width: var(--avatar-size, 112px); }
   .pixel-avatar__portrait {
-    width: 112px;
-    height: 112px;
+    width: var(--avatar-size, 112px);
+    height: var(--avatar-size, 112px);
     background: url('/images/mitch-emotes-developer.png') 0 0 / 600% var(--row-size, 286.129032%) no-repeat;
     image-rendering: pixelated;
     background-position: calc(var(--state-x, 0%) + var(--frame-offset, 0%)) var(--state-y, 0%);
@@ -31,10 +31,6 @@
   @keyframes avatar-frames {
     0%, 100% { --frame-offset: 0%; }
     50% { --frame-offset: 20%; }
-  }
-  @media (min-width: 768px) {
-    .pixel-avatar, .pixel-avatar__portrait { width: 144px; }
-    .pixel-avatar__portrait { height: 144px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .pixel-avatar__portrait { animation: none; }

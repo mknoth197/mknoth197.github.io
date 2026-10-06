@@ -3,12 +3,9 @@ title: "Agent Trust – Scanning, Policy, and Reusable Review"
 summary: "Built a versioned trust layer around a skill scanner, separating scan observations from policy decisions and emitting SARIF for CI. Packaged local pre-PR reviews, branch-review skills, and feedback hooks so trust practices can travel across repositories."
 period: "2026 – present"
 stack: ["python", "skill-scanning", "sarif", "github-actions", "review-skills"]
-metric:
-  value: "Trust v1"
-  label: "Versioned scan evidence and CI policy"
-featured: true
+featured: false
 order: 0.3
-era: ai
+section: recent
 ---
 
 ## What shipped
@@ -17,7 +14,7 @@ I built an Agent Trust Layer that wraps a skill scanner in a versioned trust env
 
 The implementation includes configurable policy thresholds, explicit accepted-risk records, and scanner-error envelopes. A failed scan is an error state rather than a clean result. Semantic scans remain advisory until calibration supports using them as a gate.
 
-## Review that survives the session
+## My contribution to reusable review
 
 I packaged the team’s review practice into a local pre-PR gauntlet, reusable branch-review skills, and feedback hooks. The objective is to make repeated misses change the next run: a clearer instruction, a regression check, or a reusable reviewer that another engineer can inherit.
 

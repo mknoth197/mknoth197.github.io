@@ -5,7 +5,7 @@ period: "2019 – 2021"
 stack: ["java", "api-gateway", "oauth", "rbac"]
 featured: false
 order: 5
-era: platform
+section: foundations
 roleTag: "First external API"
 ---
 

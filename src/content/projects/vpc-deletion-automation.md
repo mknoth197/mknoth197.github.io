@@ -5,7 +5,7 @@ period: "2023 – 2025"
 stack: ["step-functions", "lambda", "event-driven", "python", "route53", "dev-containers"]
 featured: false
 order: 3
-era: platform
+section: foundations
 ---
 
 ## Scope

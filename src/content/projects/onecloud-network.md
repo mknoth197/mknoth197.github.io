@@ -5,7 +5,7 @@ period: "2023 – 2025"
 stack: ["aws", "vpc", "transit-gateway", "route53", "terraform", "acm"]
 featured: false
 order: 2
-era: platform
+section: foundations
 ---
 
 ## Scope

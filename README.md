@@ -112,3 +112,10 @@ Two weights of Instrument Serif and three weights of Inter are loaded — don't 
 - **Tailwind v4** over hand-CSS: faster iteration, no runtime cost.
 - **HashRouter-less**: Astro is fully static, so every page is a real HTML file that GitHub Pages serves directly — no 404-on-refresh hacks needed.
 - **View Transitions API** via Astro's `<ClientRouter />`: smooth page transitions without shipping a SPA.
+
+### Downloadable résumé
+
+`src/data/resume.json` supplies the `/resume/` page and the downloadable PDF.
+After editing it, regenerate `public/mitchell-knoth-resume.pdf` with
+`python3 scripts/build-resume.py` (requires ReportLab), inspect the PDF, and commit
+both source and output. Normal site builds use the committed PDF.

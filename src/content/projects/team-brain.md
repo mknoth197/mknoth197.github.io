@@ -3,12 +3,9 @@ title: "Team Brain – Shared Context for Humans and Agents"
 summary: "Designed and stood up a shared knowledge repository with an agent-maintained wiki schema, hybrid retrieval, a structural knowledge graph, and a memory lifecycle. Repository-owned skills, hooks, and CI lint checks make research and decisions reusable across agent tools."
 period: "2026 – present"
 stack: ["hybrid-search", "knowledge-graph", "memory", "skills", "github-actions"]
-metric:
-  value: "Shared context"
-  label: "A maintained team brain across agent tools"
-featured: true
+featured: false
 order: 0.1
-era: ai
+section: recent
 ---
 
 ## The problem
@@ -25,8 +22,8 @@ Product work can open the product repository and the brain in the same session w
 
 I also wrote the team’s harness thesis and Agent Delegation Stack, connecting context work to the controls, evaluations, and operating practices needed for safe delegation.
 
-## The boundary
+## Delivered capability
 
-Shared context is an operational building block, not evidence of universal productivity gains. It makes the team’s established starting capability accessible; engineers still frame problems, resolve ambiguity, and judge tradeoffs.
+Engineers and agents can retrieve source-backed research and decisions from a shared repository, while product-specific code and constraints remain in the product repository. A reviewed lesson can be contributed once and reached from another agent tool rather than remaining in an individual prompt collection.
 
-Scheduled knowledge maintenance is a separate reliability question. The weekly graph-refresh workflow is currently failing, so the delivered result here is the maintained repository and its retrieval and quality tooling, not a claim of reliable unattended refresh.
+My responsibility was the repository architecture and its schema, retrieval, graph, memory, and quality tooling. This establishes a maintained context capability; broader adoption and productivity effects remain questions to measure.

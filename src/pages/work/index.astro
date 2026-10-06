@@ -5,8 +5,8 @@ import WorkRow from '../../components/WorkRow.astro';
 import { getProjects } from '../../lib/content';
 
 const projects = await getProjects();
-const recent = projects.filter((p) => p.data.era === 'ai' || p.id === 'pr-to-production');
-const foundations = projects.filter((p) => p.data.era !== 'ai' && p.id !== 'pr-to-production');
+const recent = projects.filter((p) => p.data.section === 'recent');
+const foundations = projects.filter((p) => p.data.section === 'foundations');
 
 // Year gutter: dim a row's period when it repeats the previous row's start-year band,
 // binding the two 2023–2025 platform entries into one visual stratum.
@@ -17,7 +17,7 @@ const foundationRows = foundations.map((p, i) => ({
 }));
 
 const recentLede =
-  'Recent delivery: an engineering evidence product in production, a shared team brain, cloud evaluations with multiple coding agents, and reusable trust and review tooling, alongside the Developer Experience hardening that preceded the tiger team. Each case study distinguishes what shipped from what remains a pilot or a research question.';
+  'Production software, cloud execution, and developer-platform reliability. The case studies show my responsibilities, the decisions behind the implementation, and the delivered result.';
 const foundationsLede =
   'The platform work this chapter builds on: cloud networking, secure data access, and the operational plumbing that lets other teams move fast. Earlier career work stays separate from recent delivery.';
 ---
@@ -33,9 +33,8 @@ const foundationsLede =
       style="color: var(--fg-muted);"
     >
       Recent work from October 2025 through October 2026, followed by the earlier platform and
-      cloud foundations it builds on. Most of it
-      sits behind the enterprise firewall, so these case studies separate operational facts, active
-      experiments, and intended outcomes rather than implying more evidence than I can publish.
+      cloud foundations it builds on. Internal systems are described through their engineering problems
+      and public-safe outcomes.
     </p>
   </section>
 

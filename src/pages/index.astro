@@ -11,7 +11,7 @@ const { featured } = splitFeaturedPost(await getPublishedPosts());
 
 const featuredMetrics = (await getProjects())
   .filter((project) => project.data.featured && project.data.metric)
-  .slice(0, 4);
+  .slice(0, 3);
 ---
 
 <Base>
@@ -22,13 +22,18 @@ const featuredMetrics = (await getProjects())
       class="prose-serif mb-6 text-[40px] leading-[1.1] sm:text-[44px]"
       style="color: var(--fg);"
     >
-      Building toward an <em style="color: var(--accent);">SDLC</em> where AI is a first-class participant.
+      Cloud and <em style="color: var(--accent);">developer-platform</em> engineering, from design to production.
     </h1>
 
     <p class="max-w-[60ch] text-[16.5px] leading-[1.7] text-pretty" style="color: var(--fg-muted);">
-      Most claims about AI and engineering run on vibes. I’d rather show the work: an evidence
-      product in production, shared context that travels across agent tools, and cloud execution
-      experiments with explicit trust boundaries. <a href="/about/" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">More about how I got here →</a>
+      I’m Mitch, a Cloud Software Engineer at John Deere. I build production systems for
+      AI-assisted software delivery, with a foundation in cloud infrastructure, security, and
+      developer experience. My recent work spans an engineering evidence product, coding-agent
+      execution, and the controls that keep delivery reliable.
+    </p>
+    <p class="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-[14px]" style="color: var(--accent);">
+      <a href="/resume/" class="underline underline-offset-4">Experience &amp; résumé →</a>
+      <a href="/about/" class="underline underline-offset-4">About my work →</a>
     </p>
   </section>
 
@@ -37,15 +42,16 @@ const featuredMetrics = (await getProjects())
     class="mb-5 -mt-3 text-[15px] italic"
     style="color: var(--fg-muted); font-family: var(--font-serif);"
   >
-    Recent delivery, with the boundaries made explicit.
+    Three perspectives on building systems other engineers can depend on.
   </p>
   <div
-    class="grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border sm:grid-cols-2 xl:grid-cols-4"
+    class="grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border md:grid-cols-3"
     style="background: var(--border); border-color: var(--border);"
   >
     {
       featuredMetrics.map((project) => (
         <MetricCard
+          href={`/work/${project.id}/`}
           value={project.data.metric!.value}
           label={project.data.metric!.label}
         />

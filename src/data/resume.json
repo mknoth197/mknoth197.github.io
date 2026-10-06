@@ -1,0 +1,60 @@
+{
+  "name": "Mitchell Knoth",
+  "title": "Cloud Software Engineer",
+  "summary": "Cloud and developer-platform engineer building production systems for AI-assisted software delivery. Experience spans backend performance, cloud infrastructure, secure agent execution, and delivery governance.",
+  "focus": "Developer platforms, cloud infrastructure, and AI developer tools",
+  "location": "Des Moines, Iowa",
+  "email": "mknoth197@gmail.com",
+  "website": "https://mknoth197.github.io",
+  "github": "https://github.com/mknoth197",
+  "linkedin": "https://www.linkedin.com/in/mitchellknoth/",
+  "updated": "October 2026",
+  "employer": "John Deere",
+  "experience": [
+    {
+      "title": "AI-era software delivery",
+      "period": "2026 - present",
+      "href": "/work/agentic-engineering/",
+      "points": [
+        "Wrote product requirements and much of the design record for a team-owned engineering evidence product now in production with steady, growing use.",
+        "Delivered live-data views, a personal work timeline, and Redis caching with fail-open reads, tier-specific lifetimes, and freshness-versioned keys; main data endpoints became substantially faster.",
+        "Separated CI validation from deployment and contributed dedicated acceptance checks for engineering views.",
+        "Designed a shared knowledge repository with hybrid retrieval, a structural graph, a memory lifecycle, and CI lint checks; co-facilitate a guild and office hours for around 38 practitioners.",
+        "Ran Codex and Claude Code in cloud sandboxes and added repository-credential proxying. Implemented a separate keyless Codex pilot; live verification and containment hardening remain in progress.",
+        "Built a versioned skill-scanning trust layer with separate policy decisions and SARIF output; packaged reusable pre-PR reviews and feedback hooks."
+      ]
+    },
+    {
+      "title": "Developer Experience",
+      "period": "Late 2025 - early 2026",
+      "href": "/work/pr-to-production/",
+      "points": [
+        "Hardened the separation-of-duties platform with Datadog monitors, dashboards, and synthetics; added automatic incidents for pipeline failures and consolidated a legacy processor.",
+        "Worked through CVE and Security Hub findings, migrated vulnerability-data integrations, reviewed organization governance, and introduced agent tooling into team repositories."
+      ]
+    },
+    {
+      "title": "Enterprise cloud foundations",
+      "period": "2023 - 2025",
+      "href": "/work/onecloud-network/",
+      "points": [
+        "Led NAT Gateway consolidation, orchestrated a DNS migration, and automated certificate validation and renewal paths.",
+        "Replaced manual account and VPC deletion with Step Functions and Lambda workflows; built DNS verification and cleanup and introduced reproducible Dev Container environments."
+      ]
+    },
+    {
+      "title": "Digital equipment and external API platforms",
+      "period": "2019 - 2023",
+      "href": "/work/global-gateway/",
+      "points": [
+        "Architected an external-facing dealer API with role-based authorization and audit logging; built a secure licensing-data ingestion prototype that helped make the case for an enterprise data-engineering investment."
+      ]
+    }
+  ],
+  "skills": "TypeScript, Python, Java; AWS, Terraform, Step Functions, Lambda; Redis; GitHub Actions; Datadog; identity and credential boundaries; agent harness and context engineering.",
+  "education": "B.S. Software Engineering, Iowa State University, 2020. Cum Laude; cyber security minor.",
+  "credentials": [
+    "AWS Certified DevOps Engineer - Professional (May 2026)",
+    "AWS Certified Advanced Networking - Specialty (August 2025)"
+  ]
+}

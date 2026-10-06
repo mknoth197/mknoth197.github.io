@@ -5,7 +5,7 @@ period: "2021 – 2023"
 stack: ["java", "aws", "data-pipeline", "oauth"]
 featured: false
 order: 4
-era: platform
+section: foundations
 ---
 
 ## Scope

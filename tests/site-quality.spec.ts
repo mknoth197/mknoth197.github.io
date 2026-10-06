@@ -3,9 +3,13 @@ import { expect, test } from '@playwright/test';
 const routes = [
   '/',
   '/about/',
+  '/resume/',
   '/work/',
   '/writing/',
   '/work/agentic-engineering/',
+  '/work/team-brain/',
+  '/work/secure-agent-execution/',
+  '/work/agent-trust/',
   '/work/pr-to-production/',
   '/work/onecloud-network/',
   '/work/vpc-deletion-automation/',
@@ -156,4 +160,49 @@ test('both themes preserve readable foreground and background tokens', async ({ 
 
     expect(colors.background).not.toBe(colors.foreground);
   }
+});
+
+test('hero avatar loops without controls and honors reduced motion', async ({ page }) => {
+  await page.goto('/');
+  const portrait = page.locator('.pixel-avatar__portrait');
+  await expect(portrait).toBeVisible();
+  const asset = await page.request.get('/images/mitch-emotes-developer.png');
+  expect(asset.ok()).toBe(true);
+  expect(asset.headers()['content-type']).toContain('image/png');
+  const spriteBleed = await page.evaluate(async () => {
+    const image = new Image();
+    image.src = '/images/mitch-emotes-developer.png';
+    await image.decode();
+    const canvas = document.createElement('canvas');
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+    const context = canvas.getContext('2d')!;
+    context.drawImage(image, 0, 0);
+    const { data } = context.getImageData(0, 0, canvas.width, canvas.height);
+    const portrait = document.querySelector('.pixel-avatar__portrait')!;
+    const animation = portrait.getAnimations().find((entry) => (entry as CSSAnimation).animationName === 'avatar-states')!;
+    const rows = (animation.effect as KeyframeEffect).getKeyframes().map((frame) => {
+      const height = canvas.height * 100 / parseFloat(String(frame['--row-size'] ?? '300%'));
+      const start = parseFloat(String(frame['--state-y'])) / 100 * (canvas.height - height);
+      return { start, end: start + height };
+    });
+    let opaqueBoundaryPixels = 0;
+    for (let y = 0; y < canvas.height; y++) {
+      for (let x = 0; x < canvas.width; x++) {
+        const nearColumnEdge = Math.abs(x / (canvas.width / 6) - Math.round(x / (canvas.width / 6))) < 0.01;
+        const nearRowEdge = rows.some(({ start, end }) => Math.abs(y - start) < 2 || Math.abs(y - end) < 2);
+        // Ignore alpha=1 export noise (less than 0.4% opacity).
+        if ((nearColumnEdge || nearRowEdge) && data[(y * canvas.width + x) * 4 + 3] > 1) {
+          opaqueBoundaryPixels++;
+        }
+      }
+    }
+    return opaqueBoundaryPixels;
+  });
+  expect(spriteBleed, 'sprite cells must have transparent gutters to prevent neighboring frames bleeding in').toBe(0);
+  await expect(page.locator('.pixel-avatar button')).toHaveCount(0);
+  expect(await portrait.evaluate((node) => getComputedStyle(node).animationIterationCount)).toBe('infinite, infinite');
+  expect(await portrait.evaluate((node) => getComputedStyle(node).animationPlayState)).toBe('running, running');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  expect(await portrait.evaluate((node) => getComputedStyle(node).animationName)).toBe('none');
 });

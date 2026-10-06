@@ -3,13 +3,11 @@ export const site = {
   shortName: 'Mitch',
   title: 'Mitchell Knoth – Cloud Software Engineer',
   description:
-    'Cloud software engineer. Building toward an SDLC where AI is a first-class participant.',
+    'Cloud and developer-platform engineer building production systems for AI-assisted software delivery.',
   location: 'Des Moines, Iowa',
   email: 'mknoth197@gmail.com',
   github: 'https://github.com/mknoth197',
   linkedin: 'https://www.linkedin.com/in/mitchellknoth/',
-  // Update if you change the "currently" pill on the home page:
-  currently: 'building the SDLC for an AI-first world',
 };
 
 export type NavItem = { label: string; href: string };

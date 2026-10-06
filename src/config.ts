@@ -8,8 +8,6 @@ export const site = {
   email: 'mknoth197@gmail.com',
   github: 'https://github.com/mknoth197',
   linkedin: 'https://www.linkedin.com/in/mitchellknoth/',
-  // Update if you change the "currently" pill on the home page:
-  currently: 'building the SDLC for an AI-first world',
 };
 
 export type NavItem = { label: string; href: string };

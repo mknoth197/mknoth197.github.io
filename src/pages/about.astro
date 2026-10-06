@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import CurrentlyPill from '../components/CurrentlyPill.astro';
 import { site } from '../config';
 
 const certs = [
@@ -32,8 +31,6 @@ const eyebrow =
   title="About"
   description="Cloud software engineer at John Deere making AI a first-class participant in the software development lifecycle, built on experience across API platforms, digital equipment licensing, cloud infrastructure, and developer experience."
 >
-  <CurrentlyPill text={site.currently} />
-
   <h1 class="prose-serif mb-6 text-[40px] leading-[1.1] sm:text-[44px]" style="color: var(--fg);">
     I’m Mitch. I build <em style="color: var(--accent);">platforms</em> that make reliable software delivery easier.
   </h1>

@@ -1,10 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import CurrentlyPill from '../components/CurrentlyPill.astro';
+import PixelAvatar from '../components/PixelAvatar.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import MetricCard from '../components/MetricCard.astro';
 import FeaturedPost from '../components/writing/FeaturedPost.astro';
-import { site } from '../config';
 import { getProjects, getPublishedPosts, splitFeaturedPost } from '../lib/content';
 
 const { featured } = splitFeaturedPost(await getPublishedPosts());
@@ -16,8 +15,6 @@ const featuredMetrics = (await getProjects())
 
 <Base>
   <section>
-    <CurrentlyPill text={site.currently} />
-
     <h1
       class="prose-serif mb-6 text-[40px] leading-[1.1] sm:text-[44px]"
       style="color: var(--fg);"
@@ -25,16 +22,21 @@ const featuredMetrics = (await getProjects())
       Cloud and <em style="color: var(--accent);">developer-platform</em> engineering, from design to production.
     </h1>
 
-    <p class="max-w-[60ch] text-[16.5px] leading-[1.7] text-pretty" style="color: var(--fg-muted);">
-      I’m Mitch, a Cloud Software Engineer at John Deere. I build production systems for
-      AI-assisted software delivery, with a foundation in cloud infrastructure, security, and
-      developer experience. My recent work spans an engineering evidence product, coding-agent
-      execution, and the controls that keep delivery reliable.
-    </p>
-    <p class="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-[14px]" style="color: var(--accent);">
-      <a href="/resume/" class="underline underline-offset-4">Experience &amp; résumé →</a>
-      <a href="/about/" class="underline underline-offset-4">About my work →</a>
-    </p>
+    <div class="hero-detail">
+      <div>
+        <p class="max-w-[60ch] text-[16.5px] leading-[1.7] text-pretty" style="color: var(--fg-muted);">
+          I’m Mitch, a Cloud Software Engineer at John Deere. I build production systems for
+          AI-assisted software delivery, with a foundation in cloud infrastructure, security, and
+          developer experience. My recent work spans an engineering evidence product, coding-agent
+          execution, and the controls that keep delivery reliable.
+        </p>
+        <p class="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-[14px]" style="color: var(--accent);">
+          <a href="/resume/" class="underline underline-offset-4">Experience &amp; résumé →</a>
+          <a href="/about/" class="underline underline-offset-4">About my work →</a>
+        </p>
+      </div>
+      <PixelAvatar />
+    </div>
   </section>
 
   <SectionLabel label="Selected work" href="/work/" />
@@ -89,3 +91,9 @@ const featuredMetrics = (await getProjects())
     )
   }
 </Base>
+<style>
+  .hero-detail { display: grid; gap: 1.5rem; align-items: end; }
+  @media (min-width: 640px) {
+    .hero-detail { grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; }
+  }
+</style>

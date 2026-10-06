@@ -1,4 +1,4 @@
-# mitchknoth.dev
+# mitchellknoth.com
 
 Personal site. Astro 6 + Tailwind v4 + MDX, dark-first with a light mode toggle. Deployed to GitHub Pages via Actions.
 
@@ -18,7 +18,7 @@ trace in `test-results/`; CI runs the same contract before GitHub Pages can depl
 
 ## Deploying to GitHub Pages
 
-This is configured for a **user site** hosted at `https://mknoth197.github.io`.
+This is a **user site** deployed through GitHub Pages and served at `https://mitchellknoth.com`. Cloudflare manages registration and DNS.
 
 1. Make sure the repo is named exactly `mknoth197.github.io` and is **public**.
 2. Repo → **Settings → Pages → Source → "GitHub Actions"**.
@@ -26,13 +26,15 @@ This is configured for a **user site** hosted at `https://mknoth197.github.io`.
 
 First deploy takes ~1 minute. Subsequent deploys are incremental and usually under 30 seconds.
 
-### If you ever change the repo name
+### Custom domain
 
-Edit `SITE` in `astro.config.mjs` and `site.github` in `src/config.ts` to match the new URL. If you move from a user site to a project site (e.g., `you/portfolio`), also set `base: '/portfolio/'` in `astro.config.mjs`.
+- GitHub repository **Settings → Pages → Custom domain**: `mitchellknoth.com`. The GitHub Actions publishing source uses this setting; a `CNAME` file is not required.
+- Cloudflare DNS: four DNS-only `A` records for `@`, pointing to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, and `185.199.111.153`.
+- Cloudflare DNS: a DNS-only `CNAME` record for `www`, pointing to `mknoth197.github.io`. GitHub redirects this alias to the apex domain.
+- Enable **Enforce HTTPS** in GitHub Pages once the custom-domain certificate is issued.
+- `SITE` in `astro.config.mjs` is the public origin for canonical URLs, RSS, and the sitemap. Update it if the public domain changes.
 
-### Custom domain later
-
-Add a `public/CNAME` file containing your domain (e.g., `mitchknoth.dev`), configure the DNS at your registrar per GitHub's docs, and set the `SITE` constant in `astro.config.mjs` to `https://mitchknoth.dev`.
+The repository name and profile link in `src/config.ts` do not change when the public domain changes. No Wrangler deployment is needed for this DNS connection.
 
 ## Writing posts
 

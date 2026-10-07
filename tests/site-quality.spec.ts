@@ -198,7 +198,9 @@ test('hero portrait is static, small, and honors reduced motion', async ({ page 
 
 for (const theme of ['dark', 'light']) {
   test(`${theme} standalone controls retain target size, state contrast, and keyboard focus`, async ({ page }) => {
-    await page.addInitScript((theme) => localStorage.setItem('theme', theme), theme);
+    await page.addInitScript((theme) => {
+      if (!localStorage.getItem('theme')) localStorage.setItem('theme', theme);
+    }, theme);
     await page.goto('/');
     await page.addStyleTag({ content: 'astro-dev-toolbar { display: none !important; }' });
     const controls = page.locator('.site-brand, .nav-link, #theme-toggle, .footer-link, .standalone-link');

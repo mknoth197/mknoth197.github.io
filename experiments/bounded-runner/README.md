@@ -81,6 +81,10 @@ local run of the matrix; it is evidence for those fixture runs, not a performanc
 
 ## Files to inspect
 
+[Docker Engine security](https://docs.docker.com/engine/security/) documents the
+namespace, resource, daemon, and kernel-configuration boundaries; it does not
+certify this experiment's containment.
+
 `run.py` owns execution and evidence; `gateway.py` mediates the token;
 `worker.py` generates the five fixture behaviors; `validate.py` holds the original
 acceptance checks; `test_lab.py` checks the matrix and returned artifacts.

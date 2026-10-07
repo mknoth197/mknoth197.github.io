@@ -11,7 +11,8 @@
     "check": "astro check",
     "test:visual": "playwright test",
     "test:visual:headed": "playwright test --headed",
-    "quality": "npm run check && npm run build && npm run test:visual"
+    "quality": "npm run lint:design && npm run check && npm run build && npm run test:visual",
+    "lint:design": "designmd lint DESIGN.md"
   },
   "dependencies": {
     "@astrojs/check": "0.9.8",
@@ -25,6 +26,7 @@
     "typescript": "5.9.3"
   },
   "devDependencies": {
+    "@google/design.md": "0.4.0",
     "@playwright/test": "^1.62.1"
   }
 }

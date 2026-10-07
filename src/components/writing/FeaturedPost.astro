@@ -16,7 +16,7 @@ const dateLabel = formatPostDate(post.data.date);
 <article class="featured-post">
   <div class="mono-meta">Featured essay · {dateLabel}</div>
   <Heading class="prose-serif">
-    <a href={href}>{post.data.title}</a>
+    <a class="standalone-link" href={href}>{post.data.title}</a>
   </Heading>
   <p>{post.data.summary}</p>
   <a class="featured-post__link" href={href}>
@@ -64,16 +64,11 @@ const dateLabel = formatPostDate(post.data.date);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.04em;
-    min-height: 24px;
+    min-height: 44px;
+    min-width: 44px;
+    align-content: center;
     text-decoration: underline;
     text-underline-offset: 3px;
-  }
-
-  @media (pointer: coarse) {
-    .featured-post__link {
-      align-content: center;
-      min-height: 44px;
-    }
   }
 
   @media (min-width: 900px) {

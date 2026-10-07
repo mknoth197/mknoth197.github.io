@@ -1,38 +1,16 @@
 <div class="pixel-avatar" aria-hidden="true">
-  <div class="pixel-avatar__portrait"></div>
+  <img class="pixel-avatar__portrait" src="/images/mitch-portrait.webp" alt="" width="296" height="310" />
 </div>
 
 <style>
-  .pixel-avatar { width: var(--avatar-size, 112px); }
-  .pixel-avatar__portrait {
+  .pixel-avatar {
     width: var(--avatar-size, 112px);
-    height: var(--avatar-size, 112px);
-    background: url('/images/mitch-emotes-developer.png') 0 0 / 600% var(--row-size, 286.129032%) no-repeat;
+  }
+
+  .pixel-avatar__portrait {
+    display: block;
+    width: 100%;
+    height: auto;
     image-rendering: pixelated;
-    background-position: calc(var(--state-x, 0%) + var(--frame-offset, 0%)) var(--state-y, 0%);
-    animation: avatar-states 18s steps(1, end) infinite, avatar-frames 0.7s steps(1, end) infinite;
-  }
-  /* Six columns: each state occupies two neighboring frames. The 1774×887 atlas
-     has unequal artwork rows: [0,310), [310,606), [606,887). Sample those
-     bounds instead of equal thirds so neighboring shoes cannot bleed in.
-     Row 1: idle, run right, run left. Row 2: wave, jump, failed.
-     Row 3: waiting, running in place, review. */
-  @keyframes avatar-states {
-    0%, 100% { --state-x: 0%; --state-y: 0%; --row-size: 286.129032%; }
-    11.111111% { --state-x: 40%; --state-y: 0%; --row-size: 286.129032%; }
-    22.222222% { --state-x: 80%; --state-y: 0%; --row-size: 286.129032%; }
-    33.333333% { --state-x: 0%; --state-y: 52.453469%; --row-size: 299.662162%; }
-    44.444444% { --state-x: 40%; --state-y: 52.453469%; --row-size: 299.662162%; }
-    55.555556% { --state-x: 80%; --state-y: 52.453469%; --row-size: 299.662162%; }
-    66.666667% { --state-x: 0%; --state-y: 100%; --row-size: 315.658363%; }
-    77.777778% { --state-x: 40%; --state-y: 100%; --row-size: 315.658363%; }
-    88.888889% { --state-x: 80%; --state-y: 100%; --row-size: 315.658363%; }
-  }
-  @keyframes avatar-frames {
-    0%, 100% { --frame-offset: 0%; }
-    50% { --frame-offset: 20%; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .pixel-avatar__portrait { animation: none; }
   }
 </style>

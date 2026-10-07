@@ -34,14 +34,17 @@ const { featured, archive } = splitFeaturedPost(posts);
               >
                 More writing
               </h2>
+              <div class="writing-index">
               {archive.map((post) => (
                 <PostRow
                   href={`/writing/${post.id}/`}
                   date={post.data.date}
                   title={post.data.title}
+                  summary={post.data.summary}
                   readingTime={post.data.readingTime}
                 />
               ))}
+              </div>
             </section>
           )}
         </>

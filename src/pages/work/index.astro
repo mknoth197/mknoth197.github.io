@@ -8,16 +8,8 @@ const projects = await getProjects();
 const recent = projects.filter((p) => p.data.section === 'recent');
 const foundations = projects.filter((p) => p.data.section === 'foundations');
 
-// Year gutter: dim a row's period when it repeats the previous row's start-year band,
-// binding the two 2023–2025 platform entries into one visual stratum.
-const band = (period: string) => period.split(/[–-]/)[0].trim();
-const foundationRows = foundations.map((p, i) => ({
-  p,
-  dim: i > 0 && band(p.data.period) === band(foundations[i - 1].data.period),
-}));
-
 const recentLede =
-  'Production software, cloud execution, and developer-platform reliability. The case studies show my responsibilities, the decisions behind the implementation, and the delivered result.';
+  'Production software, cloud execution, and developer-platform reliability.';
 const foundationsLede =
   'The platform work this chapter builds on: cloud networking, secure data access, and the operational plumbing that lets other teams move fast. Earlier career work stays separate from recent delivery.';
 ---
@@ -32,9 +24,8 @@ const foundationsLede =
       class="max-w-[60ch] text-[15.5px] leading-[1.7] text-pretty"
       style="color: var(--fg-muted);"
     >
-      Recent work from October 2025 through October 2026, followed by the earlier platform and
-      cloud foundations it builds on. Internal systems are described through their engineering problems
-      and public-safe outcomes.
+      Engineering problems, implementation decisions, and delivered results. Recent work from
+      October 2025 through October 2026, followed by earlier cloud and platform foundations.
     </p>
   </section>
 
@@ -51,6 +42,6 @@ const foundationsLede =
     {foundationsLede}
   </p>
   <div class="flex flex-col gap-2">
-    {foundationRows.map(({ p, dim }) => <WorkRow project={p} dimPeriod={dim} />)}
+    {foundations.map((project) => <WorkRow project={project} />)}
   </div>
 </Base>

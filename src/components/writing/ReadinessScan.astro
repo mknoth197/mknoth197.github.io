@@ -6,7 +6,7 @@ interface Props {
 const { questions } = Astro.props;
 ---
 
-<aside class="readiness-scan" aria-label="Repository readiness questions">
+<aside class="editorial-reading readiness-scan" aria-label="Repository readiness questions">
   {questions.map((question, index) => (
     <div class="readiness-scan__question">
       <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>

@@ -8,8 +8,7 @@ const certs = [
 ];
 const earlierCerts = 'Earlier certifications: SysOps Administrator – Associate (Feb 2025), Solutions Architect – Associate (Mar 2024), and Cloud Practitioner (Nov 2021).';
 
-// "At a glance" - front-loaded facts for a five-second skim. Rendered with the
-// existing .skills-grid idiom.
+// Front-loaded facts for a quick skim.
 const glance = [
   { k: 'Role', v: 'Cloud Software Engineer, John Deere · since 2019' },
   { k: 'Based', v: 'Des Moines, Iowa' },
@@ -35,26 +34,26 @@ const eyebrow =
     I’m Mitch. I build <em style="color: var(--accent);">platforms</em> that make reliable software delivery easier.
   </h1>
 
-  <div class="skills-grid" style="margin-top: 1.6rem;">
+  <dl class="fact-grid">
     {
       glance.map((row) => (
         <div>
-          <span class="skills-cat">{row.k}</span>
-          <span class="skills-list">{row.v}</span>
+          <dt class="skills-cat">{row.k}</dt>
+          <dd class="skills-list">{row.v}</dd>
         </div>
       ))
     }
     <div>
-      <span class="skills-cat">Links</span>
-      <span class="skills-list">
+      <dt class="skills-cat">Links</dt>
+      <dd class="fact-links skills-list">
         <a href={site.github} target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">GitHub</a>
         <span style="color: var(--fg-dim);"> · </span>
         <a href={site.linkedin} target="_blank" rel="noreferrer" style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">LinkedIn</a>
         <span style="color: var(--fg-dim);"> · </span>
         <a href={`mailto:${site.email}`} style="color: var(--accent); text-decoration: underline; text-underline-offset: 2px;">Email</a>
-      </span>
+      </dd>
     </div>
-  </div>
+  </dl>
 
   <section class="content">
     <p style={eyebrow}>Recent work · October 2025 – October 2026</p>
@@ -167,15 +166,20 @@ const eyebrow =
 
     <p style="color: var(--fg-muted); font-size: 0.9rem;">{earlierCerts}</p>
 
-    <h2>Skills</h2>
-    <div class="skills-grid">
-      <div><span class="skills-cat">AI Engineering</span><span class="skills-list">Claude Code, Codex, Copilot, MCP, agent harness design, context engineering, subagent orchestration, knowledge curation, AI-adoption telemetry, outcome-based engineering metrics</span></div>
-      <div><span class="skills-cat">Cloud &amp; IaC</span><span class="skills-list">AWS (advanced), Terraform, CloudFormation, Step Functions, Lambda, ECS Fargate</span></div>
-      <div><span class="skills-cat">Networking</span><span class="skills-list">VPC architecture, Route 53 / DNS, Transit Gateway, NAT Gateway, load balancing, hybrid connectivity</span></div>
-      <div><span class="skills-cat">Developer Experience</span><span class="skills-list">GitHub Actions, CI/CD shared workflows, automated dependency management (Renovate), GitHub Advanced Security, policy-as-code repository governance, internal developer portals (Backstage), Dev Containers</span></div>
-      <div><span class="skills-cat">Security &amp; Compliance</span><span class="skills-list">OAuth, secrets management, certificate management, network security, compliance automation, separation of duties</span></div>
-      <div><span class="skills-cat">Observability</span><span class="skills-list">CloudWatch, Datadog, Splunk, Grafana, AWS X-Ray</span></div>
-      <div><span class="skills-cat">Languages</span><span class="skills-list">Python, Java, JavaScript, TypeScript</span></div>
+    <h2>Capabilities in practice</h2>
+    <div class="capability-groups">
+      <section>
+        <h3>Agent-assisted delivery</h3>
+        <p>Harness design, context engineering, MCP, knowledge curation, and outcome-based engineering metrics. Built with Claude Code, Codex, and Copilot.</p>
+      </section>
+      <section>
+        <h3>Cloud foundations</h3>
+        <p>AWS, Terraform, CloudFormation, networking, DNS, and event-driven infrastructure. Security work spans OAuth, secrets, certificates, and compliance automation.</p>
+      </section>
+      <section>
+        <h3>Developer platforms</h3>
+        <p>GitHub Actions, shared CI/CD workflows, Renovate, repository governance, Backstage, and Dev Containers. Observability through CloudWatch, Datadog, Splunk, Grafana, and X-Ray; implementation in Python, Java, JavaScript, and TypeScript.</p>
+      </section>
     </div>
 
     <h2>Colophon</h2>

@@ -5,3 +5,5 @@ dist/
 npm-debug.log*
 playwright-report/
 test-results/
+
+experiments/**/__pycache__/

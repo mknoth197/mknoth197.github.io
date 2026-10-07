@@ -26,12 +26,13 @@ styles = {
 }
 def p(text, kind='body'): return Paragraph(text, styles[kind])
 def link(url,label): return f'<link href="{escape(url)}" color="#735521">{escape(label)}</link>'
-story=[p(escape(data['name']), 'name'), p(escape(data['title'])+' | '+escape(data['focus']), 'subtitle'), p(escape(data['location'])+' | '+link('mailto:'+data['email'],data['email'])+' | '+link(data['website'],'Portfolio')+' | '+link(data['github'],'GitHub')+' | '+link(data['linkedin'],'LinkedIn'), 'contact'),p(escape(data['summary'])),p('EXPERIENCE - '+escape(data['employer']), 'section')]
+story=[p(escape(data['name']), 'name'), p(escape(data['title'])+' | '+escape(data['focus']), 'subtitle'), p(escape(data['location'])+' | '+link('mailto:'+data['email'],data['email'])+' | '+link(data['website'],'Portfolio')+' | '+link(data['github'],'GitHub')+' | '+link(data['linkedin'],'LinkedIn'), 'contact'),p(escape(data['summary'])),p('EXPERIENCE - '+escape(data['employer'])+' | '+escape(data['employmentPeriod']), 'section'), p(escape(data['title'])+' - selected areas of responsibility', 'body')]
 for entry in data['experience']:
     title=link(data['website']+entry['href'],entry['title'])+' | '+escape(entry['period'])
     first=p('- '+escape(entry['points'][0]), 'bullet')
     story.append(KeepTogether([p(title,'entry'),first]))
     story.extend(p('- '+escape(point), 'bullet') for point in entry['points'][1:])
+story.extend([p('PUBLIC IMPLEMENTATION', 'section'),p(link(data['website']+data['publicWork']['href'], data['publicWork']['title'])+' - '+escape(data['publicWork']['summary']))])
 story.extend([p('TECHNICAL FOCUS','section'),p(escape(data['skills'])),p('EDUCATION & SELECTED CREDENTIALS','section'),p(escape(data['education']))])
 story.extend(p(escape(c),'body') for c in data['credentials'])
 def footer(canvas, doc):

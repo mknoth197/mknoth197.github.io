@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import PixelAvatar from '../components/PixelAvatar.astro';
 import SectionLabel from '../components/SectionLabel.astro';
 import MetricCard from '../components/MetricCard.astro';
+import { site } from '../config';
 import FeaturedPost from '../components/writing/FeaturedPost.astro';
 import { getProjects, getPublishedPosts, splitFeaturedPost } from '../lib/content';
 
@@ -16,43 +17,25 @@ const featuredMetrics = (await getProjects())
 <Base>
   <section>
     <h1
-      class="prose-serif mb-6 text-[40px] leading-[1.1] sm:text-[44px]"
+      class="prose-serif mb-6 text-[34px] leading-[1.1] sm:text-[44px]"
       style="color: var(--fg);"
     >
-      Cloud and <em style="color: var(--accent);">developer-platform</em> engineering, from design to production.
+      I build developer platforms for <em style="color: var(--accent);">reliable coding-agent execution.</em>
     </h1>
 
     <div class="hero-detail">
       <div class="hero-copy">
         <div class="hero-avatar-slot"><PixelAvatar /></div>
         <p class="max-w-[60ch] text-[16.5px] leading-[1.7] text-pretty" style="color: var(--fg-muted);">
-          I’m Mitch, a Cloud Software Engineer at John Deere. I work on AI-assisted delivery,
-          cloud infrastructure, and developer platforms.
+          I’m Mitch, a Cloud Software Engineer at John Deere. My work spans production engineering-data
+          systems, cloud agent sandboxes, and the context and credential boundaries that make them usable.
         </p>
         <p class="mt-5 flex flex-wrap gap-x-6 gap-y-3 text-[14px]" style="color: var(--accent);">
-          <a href="/resume/" class="standalone-link underline underline-offset-4">Experience &amp; résumé →</a>
           <a href="/work/" class="standalone-link underline underline-offset-4">Explore my work →</a>
+          <a href="/resume/" class="standalone-link underline underline-offset-4">Résumé →</a>
+          <a href={`mailto:${site.email}`} class="standalone-link underline underline-offset-4">Contact →</a>
         </p>
       </div>
-    </div>
-  </section>
-
-  <section class="decision-note" aria-labelledby="decision-question">
-    <div>
-      <p class="decision-intro">A decision from my work</p>
-      <h2 id="decision-question">Who owns an agent’s context?</h2>
-    </div>
-    <div class="decision-reasoning">
-      <p>
-        I keep product code and constraints in the product repository. Shared research and
-        reusable lessons live in a separate knowledge repository, with review before a lesson
-        travels between them.
-      </p>
-      <p class="decision-evidence">
-        Shared context and retrieval are delivered. Broader adoption and productivity effects
-        remain to be measured.
-      </p>
-      <a class="standalone-link" href="/work/team-brain/">Read the Team Brain case study →</a>
     </div>
   </section>
 
@@ -61,7 +44,7 @@ const featuredMetrics = (await getProjects())
     class="mb-5 -mt-3 text-[15px] italic"
     style="color: var(--fg-muted); font-family: var(--font-serif);"
   >
-    Three perspectives on building systems other engineers can depend on.
+    What I delivered, the decisions behind it, and what you can inspect.
   </p>
   <div
     class="grid grid-cols-1 gap-px overflow-hidden rounded-[6px] border md:grid-cols-3"
@@ -77,6 +60,20 @@ const featuredMetrics = (await getProjects())
       ))
     }
   </div>
+
+  <section class="decision-note" aria-labelledby="decision-question">
+    <div>
+      <p class="decision-intro">Inspect the implementation</p>
+      <h2 id="decision-question">A patch is a proposal. Test it outside the worker.</h2>
+    </div>
+    <div class="decision-reasoning">
+      <p>A public Docker lab mediates a synthetic credential, runs a bounded worker,
+        and checks its patch in a separate container. Reproduce successful, incorrect,
+        out-of-scope, and timed-out runs.</p>
+      <p class="decision-evidence">Independent demonstration with synthetic data and a deterministic worker.</p>
+      <a class="standalone-link" href="/work/bounded-runner/">Run the execution lab →</a>
+    </div>
+  </section>
 
   {/* Selected Work intentionally remains above Writing. */}
   {

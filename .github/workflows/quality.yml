@@ -2,7 +2,7 @@ name: Site quality
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, 'codex/**']
 
 permissions:
   contents: read
@@ -24,3 +24,9 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Validate design, types, build, and visual contract
         run: npm run quality
+      - name: Validate public execution lab and download bundle
+        run: |
+          docker pull python:3.12-alpine
+          python3 experiments/bounded-runner/test_lab.py
+          python3 scripts/package-lab.py
+          git diff --exit-code -- public/downloads/bounded-runner.zip

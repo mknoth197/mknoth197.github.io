@@ -4,8 +4,8 @@ summary: "Wrote the product requirements and delivered live-data views, a person
 period: "2026 – present"
 stack: ["typescript", "redis", "github-actions", "aws"]
 metric:
-  value: "Production evidence"
-  label: "Live engineering data, a personal work view, and caching designed around freshness."
+  value: "Live engineering data"
+  label: "Delivered live-data views, a personal timeline, and freshness-aware Redis caching."
 featured: true
 order: 0
 section: recent
@@ -13,15 +13,15 @@ section: recent
 
 import CachePath from '../../components/work/CachePath.astro';
 
+## Delivered result and ownership
+
+On a three-person team, I wrote the product requirements and much of the design record, shaped a substantial share of the backlog, and delivered live-data integrations, a personal work timeline, and shared Redis caching. I also separated CI validation from deployment and contributed dedicated acceptance checks. Teammates delivered the wider product.
+
+The product is in production. Engineers can inspect live delivery data and their own work instead of relying on demonstration data. The personal work view became its most-visited page; main data endpoints became substantially faster after caching. Internal usage and performance figures are not published here.
+
 ## The problem
 
-An engineering observatory built on mock data can demonstrate a screen, but it cannot answer questions about real delivery. Moving it into production meant connecting live sources, making the data useful to individual engineers, and keeping repeat queries responsive without masking source outages or serving stale results indefinitely.
-
-On a three-person team, I wrote the product requirements and much of the design record, shaped a substantial share of the backlog, and implemented key parts of that transition. The product is team-owned and now sees steady, growing weekly use.
-
-## My responsibility
-
-I delivered live-data integrations for key engineering views, a personal “my work” timeline, and the shared Redis caching implementation. I also separated the CI gate from deployment and contributed dedicated acceptance checks. Teammates contributed across the wider product; these are the parts of delivery I can attribute to my own work.
+A mock-data observatory can demonstrate a screen, but it cannot answer questions about real delivery. Connecting live sources introduced a second problem: repeated queries needed to stay responsive without hiding source outages or serving stale data indefinitely.
 
 ## The decision: performance without a new dependency on the cache
 
@@ -39,11 +39,11 @@ I tested the boundaries as well as the successful path: real-Redis integration c
 
 The cache’s job is narrowly defined: reuse query results where the freshness policy permits it. It does not become the system of record or hide the underlying source’s availability.
 
-## Delivered result
+## Status and limitations
 
-Key views now use live engineering data. Engineers have a personal work view, which has become the product’s most-visited page. Main data endpoints became substantially faster after the caching work, and the product is in production with steady, growing use. Internal performance and usage figures are not published here.
+**Delivered:** live-data views, the personal timeline, and shared caching, with integration checks for freshness changes and failure paths. The cache is subordinate to the source, rather than a new system of record.
 
-Those are delivery and adoption results. Observational engineering signals do not establish that AI caused productivity gains, reduced defects, or improved delivery flow.
+**Unmeasured publicly:** the size of the performance improvement and adoption trend. Observational engineering signals do not establish that AI caused productivity gains, reduced defects, or improved delivery flow.
 
 ## Beyond the product
 

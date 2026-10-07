@@ -37,6 +37,25 @@ const featuredMetrics = (await getProjects())
     </div>
   </section>
 
+  <section class="decision-note" aria-labelledby="decision-question">
+    <div>
+      <p class="decision-intro">A decision from my work</p>
+      <h2 id="decision-question">Who owns an agent’s context?</h2>
+    </div>
+    <div class="decision-reasoning">
+      <p>
+        I keep product code and constraints in the product repository. Shared research and
+        reusable lessons live in a separate knowledge repository, with review before a lesson
+        travels between them.
+      </p>
+      <p class="decision-evidence">
+        Shared context and retrieval are delivered. Broader adoption and productivity effects
+        remain to be measured.
+      </p>
+      <a class="standalone-link" href="/work/team-brain/">Read the Team Brain case study →</a>
+    </div>
+  </section>
+
   <SectionLabel label="Selected work" href="/work/" />
   <p
     class="mb-5 -mt-3 text-[15px] italic"
@@ -90,6 +109,38 @@ const featuredMetrics = (await getProjects())
   }
 </Base>
 <style>
+  .decision-note {
+    max-width: 66rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: grid;
+    gap: 1rem;
+  }
+  .decision-intro {
+    margin-bottom: 0.75rem;
+    color: var(--fg-muted);
+    font-size: 14px;
+  }
+  .decision-note h2 {
+    max-width: 22ch;
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 2.2vw, 2rem);
+    line-height: 1.2;
+    color: var(--fg);
+  }
+  .decision-reasoning { max-width: 55ch; font-size: 17px; line-height: 1.7; }
+  .decision-evidence { margin-top: 1rem; color: var(--fg-muted); }
+  .decision-reasoning a {
+    margin-top: 0.75rem;
+    color: var(--accent);
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  @media (min-width: 900px) {
+    .decision-note { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 2rem; }
+  }
   .hero-copy { display: flow-root; font-size: 16.5px; }
   .hero-avatar-slot { float: right; margin: 0 0 0.5rem 0.75rem; --avatar-size: 88px; }
   .hero-copy > p:last-child { clear: both; }

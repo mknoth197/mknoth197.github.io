@@ -11,7 +11,7 @@ interface Props {
 const { groups } = Astro.props;
 ---
 
-<figure class="repository-contract" aria-label="Repository-owned harness contract">
+<figure class="editorial-diagram repository-contract" aria-label="Repository-owned harness contract">
   {groups.map((group) => (
     <section class="repository-contract__group">
       <h3>{group.label}</h3>
@@ -50,7 +50,7 @@ const { groups } = Astro.props;
   .repository-contract h3 {
     color: var(--accent);
     font-family: var(--font-sans);
-    font-size: 0.78rem;
+    font-size: 1.375rem;
     font-weight: 600;
     letter-spacing: 0;
     line-height: 1.35;

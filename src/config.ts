@@ -1,9 +1,9 @@
 export const site = {
   name: 'Mitchell Knoth',
   shortName: 'Mitch',
-  title: 'Mitchell Knoth – Cloud Software Engineer',
+  title: 'Mitchell Knoth – Developer Platforms & Coding Agents',
   description:
-    'Cloud and developer-platform engineer building production systems for AI-assisted software delivery.',
+    'Developer-platform engineer building reliable coding-agent execution, shared context, and production engineering-data systems.',
   location: 'Des Moines, Iowa',
   email: 'mknoth197@gmail.com',
   github: 'https://github.com/mknoth197',

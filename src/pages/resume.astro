@@ -6,17 +6,20 @@ import resume from '../data/resume.json';
   <article class="content mx-auto">
     <h1 class="prose-serif text-[40px] leading-tight" style="color: var(--fg);">Experience &amp; résumé</h1>
     <p>{resume.summary}</p>
-    <p><strong>Focus:</strong> {resume.focus}.<br />{resume.title}, {resume.employer} · {resume.location}</p>
+    <p><strong>Focus:</strong> {resume.focus}.<br />{resume.title}, {resume.employer} · {resume.employmentPeriod} · {resume.location}</p>
     <p><a href="/mitchell-knoth-resume.pdf" download>Download résumé (PDF)</a> · <a href={`mailto:${resume.email}`}>Email</a> · <a href={resume.linkedin}>LinkedIn</a></p>
     <p class="mono-meta">Updated {resume.updated}</p>
     {resume.experience.map((entry) => (
       <section class="resume-entry">
         <h2>{entry.title}</h2>
+        <p>{resume.title} · {resume.employer}</p>
         <p class="mono-meta">{entry.period}</p>
         <ul class="resume-points">{entry.points.map((point) => <li>{point}</li>)}</ul>
         <p><a href={entry.href}>Read case study →</a></p>
       </section>
     ))}
+    <h2>Independent public work</h2>
+    <p><a href={resume.publicWork.href}>{resume.publicWork.title}</a>: {resume.publicWork.summary}</p>
     <h2>Technical focus</h2>
     <p>{resume.skills}</p>
     <h2>Education &amp; selected credentials</h2>

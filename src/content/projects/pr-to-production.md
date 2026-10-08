@@ -4,8 +4,8 @@ summary: "Hardened an event-driven separation-of-duties platform with observabil
 period: "Late 2025 – early 2026"
 stack: ["aws", "github-actions", "event-driven", "datadog", "python", "typescript"]
 metric:
-  value: "Reliable delivery"
-  label: "Pipeline observability, automatic incidents, and a consolidated compliance processor."
+  value: "Delivery operations"
+  label: "Added pipeline monitoring and automatic incidents; consolidated a legacy processor."
 featured: true
 order: 1
 section: recent

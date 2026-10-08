@@ -10,6 +10,7 @@ const routes = [
   '/work/team-brain/',
   '/work/secure-agent-execution/',
   '/work/agent-trust/',
+  '/work/bounded-runner/',
   '/work/pr-to-production/',
   '/work/onecloud-network/',
   '/work/vpc-deletion-automation/',
@@ -18,6 +19,7 @@ const routes = [
   '/writing/the-harness-should-not-live-on-your-laptop/',
   '/writing/the-model-is-table-stakes/',
   '/writing/done-is-a-claim-not-a-state/',
+  '/writing/patch-outside-worker/',
   '/this-route-should-not-exist/',
 ];
 
@@ -144,6 +146,12 @@ for (const theme of ['dark', 'light']) {
           expect(title?.y, 'first case should be visible within the opening screen').toBeLessThanOrEqual(700);
         }
       }
+      if (page.viewportSize()!.width < 768) {
+        for (const caption of await page.locator('.comparison-table caption').all()) {
+          const widthRatio = await caption.evaluate((node) => node.getBoundingClientRect().width / node.parentElement!.getBoundingClientRect().width);
+          expect(widthRatio, 'stacked comparisons need full-width captions').toBeGreaterThanOrEqual(0.9);
+        }
+      }
       if (route === '/') {
         const action = await page.getByRole('link', { name: 'Explore my work' }).boundingBox();
         expect(action?.y, 'primary work route must appear in the first phone screen').toBeLessThan(800);
@@ -156,6 +164,7 @@ for (const theme of ['dark', 'light']) {
         expect(widths.every((difference) => difference <= 1), 'reading panels must not inherit diagram width').toBe(true);
       }
       if (process.env.REVIEW_CAPTURE_DIR && !route.includes('this-route')) {
+        await page.addStyleTag({ content: 'astro-dev-toolbar { display: none !important; }' });
         // Scroll through lazy images before accepting rendered review evidence.
         for (const image of await page.locator('main img').all()) {
           await image.scrollIntoViewIfNeeded();

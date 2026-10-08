@@ -11,6 +11,8 @@ const SITE = 'https://mitchellknoth.com';
 // https://astro.build/config
 export default defineConfig({
   site: SITE,
+  // Keep the development-only overlay out of headed review and pointer tests.
+  devToolbar: { enabled: false },
   integrations: [mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],

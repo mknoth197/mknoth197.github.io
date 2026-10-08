@@ -14,13 +14,13 @@ const dateLabel = formatPostDate(post.data.date);
 ---
 
 <article class="featured-post">
-  <div class="mono-meta">Featured essay · {dateLabel}</div>
+  <div class="mono-meta">Featured writing · {dateLabel}</div>
   <Heading class="prose-serif">
     <a class="standalone-link" href={href}>{post.data.title}</a>
   </Heading>
   <p>{post.data.summary}</p>
   <a class="featured-post__link" href={href}>
-    Read the field guide <span aria-hidden="true">→</span>
+    Read the piece <span aria-hidden="true">→</span>
   </a>
 </article>
 

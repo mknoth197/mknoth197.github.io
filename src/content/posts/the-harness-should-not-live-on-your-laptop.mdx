@@ -7,6 +7,7 @@ eyebrow: "Essay · Agentic engineering"
 tags: ["ai", "agents", "engineering", "cloud"]
 ---
 
+import ComparisonTable from '../../components/writing/ComparisonTable.astro';
 import ArticleToc from '../../components/writing/ArticleToc.astro';
 import ArtifactFlow from '../../components/writing/ArtifactFlow.astro';
 import ContextPipeline from '../../components/writing/ContextPipeline.astro';
@@ -229,13 +230,23 @@ Enterprises should adopt cloud sandboxes when that boundary is visible, governab
 
 The architectural argument is provider-neutral. My current product assessment is not.
 
-From my personal experience, [Cursor](https://cursor.com/docs/cloud-agent) is far ahead in cloud agents and agent sandboxes. The difference is not simply the model. Cursor has treated environment setup as a product experience. Its setup flow guides the user toward a remote environment definition, and [Cursor documents](https://docs.cursor.com/background-agent) that development secrets are encrypted at rest using KMS and provided to the background-agent environment. The same documentation recommends keeping machine setup in a repository-owned `.cursor/environment.json` or storing it privately.
+My August 14, 2026 assessment focused on three criteria: how a user declares the remote environment, where application secrets become available, and whether enterprise authentication can be delegated to the run. These are the capabilities described by the sources reviewed for this essay, not a live comparison of the products today.
 
-[Claude Code Remote](https://code.claude.com/docs/en/claude-code-on-the-web) is capable, and Anthropic's public documentation calls the hosted product **Claude Code on the web**. Its current secret workflow is a meaningful limitation for me. [Anthropic states](https://code.claude.com/docs/en/claude-code-on-the-web) that the hosted environment does not yet have a dedicated secrets store and does not support interactive authentication such as AWS SSO. Environment variables and setup scripts are visible to people who can edit that environment. Anthropic separately protects GitHub operations through a scoped proxy, so this is not an absence of all credential protection. It is a gap for arbitrary application secrets and enterprise authentication.
+<ComparisonTable
+  caption="Capabilities reviewed August 14, 2026"
+  headings={['Criterion', 'Cursor', 'Claude Code on the web', 'Codex Cloud']}
+  rows={[
+    ['Environment setup', 'Guided setup with repository-owned or private environment configuration', 'Repository-owned configuration and hosted sessions', 'Separate setup and agent phases'],
+    ['Secret boundary', 'Supplied development secrets encrypted at rest using KMS', 'No dedicated secrets store in the documentation reviewed; environment editors can see variables and setup scripts', 'Encrypted secrets available during setup and removed before the agent phase'],
+    ['Enterprise access', 'General workload federation not found in the reviewed public documentation', 'Scoped GitHub proxy; interactive AWS SSO unsupported in the reviewed documentation', 'General workload federation not found in the reviewed public documentation'],
+  ]}
+/>
 
-[Codex Cloud](https://developers.openai.com/codex/cloud) shows promise and has a stronger secret boundary than I initially understood. [OpenAI documents](https://learn.chatgpt.com/docs/environments/cloud-environment) that Codex secrets receive additional encryption, are decrypted for task execution, are available only during setup, and are removed before the agent phase. That is a meaningful design choice, especially for installing private dependencies without leaving credentials available to the model during implementation.
+Sources: [Cursor environment and secret documentation](https://docs.cursor.com/background-agent), [Claude Code on the web](https://code.claude.com/docs/en/claude-code-on-the-web), and [Codex cloud environments](https://learn.chatgpt.com/docs/environments/cloud-environment).
 
-These are current field notes, not a controlled benchmark. Products will change, and the cited documentation supports only the specific capabilities described above. “Cursor is far ahead” is my assessment of the complete onboarding and sandbox experience I have used—not a universal measurement of agent quality.
+Cursor's guided environment setup was the strongest onboarding experience for my workflow at that review. That is a personal assessment of setup, not a measurement of model quality, task success, or security. Codex's setup-only secret boundary addresses a different concern: keeping dependency-installation credentials out of the later agent phase. Claude's scoped GitHub proxy protects repository access, while arbitrary application secrets and interactive enterprise authentication remained limitations for my use case.
+
+These differences suggest specific product work rather than a universal ranking. A repeatable comparison should start with the same repository and task, then record setup effort, accessible resources, credential exposure, returned artifacts, and repair effort. Recheck the documentation before choosing a platform: the products will change.
 
 <h2 id="the-next-enterprise-requirement">The next enterprise requirement is federation</h2>
 
